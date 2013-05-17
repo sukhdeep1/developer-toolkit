@@ -22,9 +22,9 @@ module.exports = (grunt) ->
     copy:
       main:
         files: [
-          { expand: true, flatten: true, src: ["#{compsDir}/bootstrap.css/**/*.js"], dest: "#{publicDir}/bootstrap/js"},
-          { expand: true, flatten: true, src: ["#{compsDir}/bootstrap.css/**/*.css"], dest: "#{publicDir}/bootstrap/css"},
-          { expand: true, flatten: true, src: ["#{compsDir}/bootstrap.css/**/*.png"], dest: "#{publicDir}/bootstrap/img"}
+          { expand: true, flatten: true, src: ["#{compsDir}/bootstrap/**/*.css"], dest: "#{publicDir}/bootstrap/js"},
+          { expand: true, flatten: true, src: ["#{compsDir}/bootstrap/**/*.css"], dest: "#{publicDir}/bootstrap/css"},
+          { expand: true, flatten: true, src: ["#{compsDir}/bootstrap/**/*.png"], dest: "#{publicDir}/bootstrap/img"}
         ]
 
     uglify:

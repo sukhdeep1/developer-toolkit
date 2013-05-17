@@ -1,11 +1,15 @@
 extends layout
 
-block content
-  h1= title
-  p Welcome to #{title}
+block head
+  != css("app")
 
+block content
+  include bits/navbar
+
+  .main-content
+    include bits/tokenGenerator
+    include bits/findItems
 block scripts
-  script(type="text/javascript", src="js/libs.min.js")
 
   script(type="text/javascript")
     $(document).ready(function(){

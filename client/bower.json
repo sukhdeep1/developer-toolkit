@@ -6,6 +6,6 @@
     "angular-resource": "latest",
     "underscore": "latest",
     "jquery": "latest",
-    "bootstrap.css": "latest"
+    "bootstrap": "http://twitter.github.com/bootstrap/assets/bootstrap.zip"
   }
 }

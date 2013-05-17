@@ -1,0 +1,9 @@
+mixin search-form(legend)
+  form
+    fieldset
+      legend #{legend}
+      input( type="text", placeholder="Type something…")
+      span.help-block Example block-level help text here.
+      label.checkbox
+        input(type="checkbox") Check me out
+      button.btn(type="submit") Submit
