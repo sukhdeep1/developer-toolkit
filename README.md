@@ -4,22 +4,12 @@ This application will allow developers to launch corespring items and get the so
 
 See: [this mockup](https://www.easel.io/documents/f815298729882407?mode=preview#f815298729882407)
 
-## Building (TODO: automate this)
+## Building
 
-We assume you have node installed
+We assume you have node/npm installed
     
-    #install bower
-    npm install bower -g
-    #install grunt
-    npm install grunt -g
-    #install this app's dependencies
     npm install
-    #install the bower packages
-    cd client
-    bower install
-    #run grunt - you'll only need to do this if you've updated the frontend dependencies
-    grunt
-    #run the server
     node app.js
     
-    
+### TODO - having to install so many dependencies to run grunt is a bit of a pain.
+ ### Is there an easier way to do this?

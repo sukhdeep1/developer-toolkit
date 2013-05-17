@@ -4,16 +4,14 @@ block head
   != css("app")
 
 block content
-  include bits/navbar
-
-  .main-content
-    include bits/tokenGenerator
-    include bits/findItems
+  .root(ng-app="developer-toolkit", ng-controller="Root")
+    include bits/navbar
+    .main-content
+      include bits/tokenGenerator
+      .main-view(ng-view)
 block scripts
-
+  != js("app")
   script(type="text/javascript")
     $(document).ready(function(){
         console.log("jquery loaded");
     });
-
-  != js("app")

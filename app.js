@@ -1,20 +1,21 @@
 var fs = require('fs'),
   http = require('http'),
-  express = require('express');
+  express = require('express'),
+  routes = require('./server/routes');
 
 var app = express();
 
 app.use(require('connect-assets')({ src: __dirname + '/client/assets'}));
 app.set('views', __dirname + '/server/views');
 app.set('view engine', 'jade');
-app.use(express.static(__dirname + '/client/public'));
-app.use('/img', express.static(__dirname + '/client/assets/img'));
+
+//Only serve images - the less + coffee will be served by connect-assets
+app.use('/images', express.static(__dirname + '/client/assets/img'));
+//Bootstrap gets a special mapping
+app.use('/bootstrap', express.static(__dirname + '/client/assets/js/components/bootstrap'));
 app.use(express.bodyParser());
 
-app.get('/', function(req, res) {
-  res.render('index', {title: "Index"});
-});
-
+routes.init(app);
 
 // start server
 var port = process.env.PORT || 5000;
