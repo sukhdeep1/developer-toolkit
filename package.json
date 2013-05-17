@@ -12,6 +12,7 @@
     "corespring": "https://github.com/corespring/corespring-js/tarball/master"
   },
   "devDependencies": {
+    "bower" : "*",
     "grunt": "*",
     "grunt-contrib-jshint": "*",
     "grunt-contrib-uglify": "*",
@@ -23,5 +24,7 @@
   },
   "engines": {
     "node": ">= 0.6.0"
-  }
+  },
+  "scripts" : { "prepublish" : "echo prepublish; ./prepublish"}
+
 }
