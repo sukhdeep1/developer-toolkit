@@ -1,0 +1,11 @@
+{
+  "name": "developer-toolkit-client",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "latest",
+    "angular-resource" : "latest",
+    "underscore" : "latest",
+    "jquery" : "latest",
+    "bootstrap" : "latest"
+  }
+}

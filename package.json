@@ -1,0 +1,17 @@
+{
+  "author": "CoreSpring",
+  "name": "player-test-app",
+  "version": "0.0.1",
+  "dependencies": {
+    "express":"*",
+    "jade": "*",
+    "connect-assets" : "*",
+    "coffee-script" : "*",
+    "underscore" : "*",
+    "corespring" : "https://github.com/corespring/corespring-js/tarball/master"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">= 0.6.0"
+  }
+}
