@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-grunt clean
+node ./node_modules/grunt-cli/bin/grunt clean
 cd client
 bower install
 cd ..
-grunt
+node ./node_modules/grunt-cli/bin/grunt
