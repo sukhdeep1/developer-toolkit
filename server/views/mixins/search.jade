@@ -2,8 +2,17 @@ mixin search-form(legend)
   form
     fieldset
       legend #{legend}
-      input( type="text", placeholder="Type something…")
-      span.help-block Example block-level help text here.
-      label.checkbox
-        input(type="checkbox") Check me out
-      button.btn(type="submit") Submit
+      table
+        tr
+          td
+            label Keyword
+            input( type="text", placeholder="Type something…")
+          td
+            label Collection
+            input( type="text", placeholder="Type something…")
+          td
+            label Collection
+            input( type="text", placeholder="Type something…")
+          td
+            label
+            button.pull-left.btn(type="submit") Submit
