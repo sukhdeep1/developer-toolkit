@@ -34,11 +34,15 @@ module.exports = (grunt) ->
         files:
           "client/public/js/libs.min.js": ["#{publicDir}/js/libs.js"]
 
+    clean: ["#{publicDir}", "#{compsDir}"]
+
+
   grunt.initConfig config
   grunt.loadNpmTasks 'grunt-contrib-concat'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-compress'
   grunt.loadNpmTasks 'grunt-contrib-copy'
+  grunt.loadNpmTasks 'grunt-contrib-clean'
 
   # Default task(s).
   grunt.registerTask 'default', ['concat', 'uglify', 'copy']
