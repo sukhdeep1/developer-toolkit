@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+block scripts
+  script(type="text/javascript", src="js/libs.min.js")
+
+  script(type="text/javascript")
+    $(document).ready(function(){
+        console.log("jquery loaded");
+    });
+
+  != js("app")
