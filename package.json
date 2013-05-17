@@ -9,9 +9,7 @@
     "less": "*",
     "coffee-script": "*",
     "underscore": "*",
-    "corespring": "https://github.com/corespring/corespring-js/tarball/master"
-  },
-  "devDependencies": {
+    "corespring": "https://github.com/corespring/corespring-js/tarball/master",
     "bower" : "*",
     "grunt": "*",
     "grunt-cli" : "*",
