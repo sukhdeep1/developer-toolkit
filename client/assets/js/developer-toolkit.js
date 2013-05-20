@@ -6,3 +6,4 @@ angular.module('developer-toolkit', ['corespring-ng-services', 'ngResource'])
       .otherwise({redirectTo: '/player'});
   }]);
 
+

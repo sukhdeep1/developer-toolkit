@@ -1,5 +1,4 @@
 //= require "components/jquery/jquery"
-//= require "extras/jQuery.XDomainRequest"
 //= require "components/angular/angular"
 //= require "components/angular-resource/angular-resource"
 //= require "components/bootstrap/js/bootstrap"
@@ -7,3 +6,5 @@
 //= require_tree "components/corespring-ng-services/lib"
 //= require "developer-toolkit"
 //= require_tree "controllers"
+
+
