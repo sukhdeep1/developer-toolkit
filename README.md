@@ -6,7 +6,7 @@ See: [this mockup](https://www.easel.io/documents/f815298729882407?mode=preview#
 
 ## Building
 
-We assume you have node/npm installed
+We assume you have node/npm & bower installed
     
     npm install
     node app.js

@@ -8,12 +8,6 @@ var Routes = function(){
       res.render('index', {title: "Index", corespringUrl : config.get("CORESPRING_URL")});
     });
 
-
-    app.get('/testpage', function(req,res){
-      res.render('testpage', {title: "Index", corespringUrl : config.get("CORESPRING_URL")});
-    });
-
-
     app.get('/partials/:name', function(req,res){
       res.render('partials/' + req.params.name);
     })
