@@ -1,8 +1,13 @@
-
 angular.module('developer-toolkit')
-  .controller('TokenGenerator', [ '$scope', 'AccessToken', ($scope, AccessToken) ->
-    console.log "TokenGenerator"
+  .controller('TokenGenerator', [ '$scope', '$rootScope','AccessToken', ($scope, $rootScope, AccessToken) ->
 
-    console.log "AccessToken..: #{AccessToken}"
-    console.log " #{$scope.accessToken}"
+    $scope.generateToken = ->
+      onSuccess = (data) ->
+        console.log "Got a toke: #{data}"
+        $rootScope.accessToken = data.access_token
+        null
+
+      onError = (error) -> console.warn "An error occured: #{error}"
+      AccessToken.generate $scope.clientId, $scope.clientSecret, onSuccess, onError
   ])
+

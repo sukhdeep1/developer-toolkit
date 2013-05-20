@@ -1,5 +1,8 @@
 angular.module('developer-toolkit')
-  .controller('Root', ['$scope', ($scope) ->
+  .controller('Root', ['$scope', '$rootScope', ($scope, $rootScope) ->
     console.log "root : #{$scope}"
-    $scope.accessToken = "No token"
+    $rootScope.accessToken = "No token"
+
+    $rootScope.$watch 'accessToken', (newValue) ->
+      console.log "new token: #{newValue}"
   ])

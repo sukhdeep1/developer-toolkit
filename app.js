@@ -1,8 +1,11 @@
 var fs = require('fs'),
   http = require('http'),
   express = require('express'),
+  config = require('./server/config'),
   routes = require('./server/routes');
 
+
+config.load('server/config/defaults.json');
 var app = express();
 
 app.use(require('connect-assets')({ src: __dirname + '/client/assets'}));

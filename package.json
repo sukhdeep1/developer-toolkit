@@ -9,21 +9,21 @@
     "less": "*",
     "coffee-script": "*",
     "underscore": "*",
+    "nconf": "*",
     "corespring": "https://github.com/corespring/corespring-js/tarball/master",
-    "bower" : "*",
+    "bower": "*",
     "grunt": "*",
-    "grunt-cli" : "*",
-    "grunt-contrib-jshint": "*",
-    "grunt-contrib-uglify": "*",
-    "grunt-contrib-nodeunit": "*",
-    "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-compress": "~0.5.0",
-    "grunt-contrib-copy": "~0.4.1",
+    "grunt-cli": "*",
     "grunt-contrib-clean": "~0.4.1"
   },
   "engines": {
     "node": ">= 0.6.0"
   },
-  "scripts" : { "prepublish" : "echo prepublish; ./prepublish"}
-
+  "scripts": {
+    "prepublish": "echo prepublish; ./prepublish"
+  },
+  "devDependencies": {
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-coffee": "~0.7.0"
+  }
 }

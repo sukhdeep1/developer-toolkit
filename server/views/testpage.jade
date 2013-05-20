@@ -1,0 +1,70 @@
+extends layout
+
+
+block head
+  meta( http-equiv="Content-Type", content="text/html; charset=utf-8")
+
+
+block content
+  h1 test page..
+
+  input(type="text", id="id")
+  input(type="text", id="secret")
+  input(type="submit", id="submit", value="one") One
+  input(type="submit", id="submit2", value="two") One
+
+
+block scripts
+
+  script( type="text/javascript", src="//code.jquery.com/jquery-1.8.3.min.js")
+
+
+  script(type="text/javascript")
+
+    var url = "#{corespringUrl}/auth/access_token";
+
+    function requestAccessToken(clientId, clientSecret, callback, errorCallback) {
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: {
+                'grant_type': 'client_credentials',
+                'client_id': clientId,
+                'client_secret': clientSecret
+            },
+            success: function (result) {
+                // In Firefox this comes back as a string so we need to convert it to object
+                if (typeof result == "string") result = JSON.parse(result);
+                callback(result.access_token);
+            },
+            error: function (error) {
+                errorCallback(error);
+            }
+        });
+    }
+
+
+    $(document).ready( function(){
+      //$.support.cors = true;
+
+      $("#submit2").click( function(){
+            var client_id = $("#id").val();
+            var client_secret = $("#secret").val();
+           requestAccessToken(client_id, client_secret);
+      });
+
+      $("#submit").click( function(){
+
+        $.ajax({
+          type: "POST",
+          crossDomain: true,
+          url : url,
+          data: {
+            client_id: $("#id").val(),
+            client_secret: $("#secret").val()
+          }
+        });
+      });
+
+    });
