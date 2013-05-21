@@ -4,6 +4,7 @@ This application will allow developers to launch corespring items and get the so
 
 See: [this mockup](https://www.easel.io/documents/f815298729882407?mode=preview#f815298729882407)
 
+
 ## Building
 
 We assume you have node/npm & bower installed
