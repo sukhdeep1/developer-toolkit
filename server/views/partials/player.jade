@@ -1,1 +1,23 @@
-include ../bits/findItems
+include ../mixins/search
+
+.search-and-results(ng-controller="Player", ng-show="accessToken")
+  mixin search-form("Find Items")
+  .search-results(ng-controller="SearchResults")
+    .item
+      table
+        tr
+          th.title Title
+          th.subject Primary Subject
+          th.grade Grade
+          th.type Item Type
+          th.standard Standard(s)
+          th.action Actions
+        tr(ng-repeat="i in items")
+          td.title(ng-bind-html-unsafe="i.title")
+          td.subject {{renderPrimarySubject(i.primarySubject)}}
+          td.grade {{renderGrade(i.gradeLevel)}}
+          td.type {{i.itemType}}
+          td.standard
+            a(ui-jq="tooltip", ui-options="{title: buildStandardTooltip(i.standards)}") {{buildStandardLabel(i.standards)}}
+          td.action
+            button.btn-success.btn-small(ng-click="getCode(i)") Get Code

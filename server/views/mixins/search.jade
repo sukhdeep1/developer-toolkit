@@ -1,18 +1,15 @@
 mixin search-form(legend)
-  form
+  form(ng-controller="Search")
     fieldset
       legend #{legend}
       table
         tr
           td
             label Keyword
-            input( type="text", placeholder="Type something…")
+            input(type="text", placeholder="Type something…", ng-model="keyword")
           td
             label Collection
-            input( type="text", placeholder="Type something…")
+            select(ng-model="collection", ng-options="c.name for c in collections")
           td
-            label Collection
-            input( type="text", placeholder="Type something…")
-          td
-            label
-            button.pull-left.btn(type="submit") Submit
+            label &nbsp;
+            button.btn-primary.pull-left.btn(type="submit", ng-click="search()") Search

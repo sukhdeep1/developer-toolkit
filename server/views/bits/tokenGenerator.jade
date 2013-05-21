@@ -4,8 +4,8 @@
     .form-inline
       label Access Token
       input.input(type="text", placeholder="your token here..", ng-model="accessToken")
-      label don't have one? generate one
-      input.input-small(type="text", placeholder="clientId", ng-model="clientId")
-      input.input-small(type="text", placeholder="clientSecret", ng-model="clientSecret")
-      button.btn-small.btn-success(ng-click="generateToken()") Generate
+      label Generate one
+      input.input(type="text", placeholder="clientId", ng-model="clientId")
+      input.input(type="text", placeholder="clientSecret", ng-model="clientSecret")
+      button.btn-small.btn-success(ng-click="generateToken()") {{generateButtonLabel}}
 

@@ -1,26 +1,26 @@
 @grey: #8a8d8e;
 @green: #92d300;
 
-*{
+* {
   font-family: 'Ubuntu', sans-serif;
 }
 
-body{
+body {
 
 }
 
-.navbar{
+.navbar {
 
-  .brand{
+  .brand {
     font-weight: lighter;
   }
-  .corespring-logo{
+  .corespring-logo {
     width: 82px;
     height: 30px;
     padding: 8px;
     padding-bottom: 0px;
     display: block;
-    float:left;
+    float: left;
     margin-left: 10px;
     margin-top: 0px;
     margin-bottom: 0px;
@@ -30,22 +30,62 @@ body{
   }
 }
 
-
-.main-content{
+.main-content {
   position: relative;
   top: 50px;
   padding: 20px;
 }
 
-.token-generator{
+.token-generator {
   margin: 0px;
-  .form-inline{
-    label{
+  .well {
+    padding: 10px;
+  }
+  .form-inline {
+    label {
       font-size: 13px;
       color: @grey;
     }
-    *{
-      margin:5px;
+    * {
+      margin: 5px;
+    }
+  }
+}
+
+.search-and-results {
+
+  td {
+    padding: 5px;
+    button {
+      margin-bottom: 10px;
+    }
+  }
+
+  .search-results {
+    table {
+      width: 100%;
+      tr {
+        border-bottom: solid 1px lighten(@grey, 30%);
+        th, td {
+          text-align: left;
+          vertical-align: top;
+        }
+        .action {
+          width: 100px;
+        }
+        .type {
+          width: 270px;
+        }
+        .subject {
+          width: 140px;
+        }
+        .standard {
+          width: 80px;
+        }
+        .grade {
+          width: 80px;
+        }
+      }
     }
   }
 }
