@@ -10,13 +10,11 @@ angular.module('developer-toolkit')
 
     $scope.generateToken = function () {
       var onSuccess = function (data) {
-        $scope.$emit('setTokenAndClientId',
-          {
-            accessToken: data.access_token,
-            clientId: $scope.appVars.clientId
-          });
+        $scope.$emit('setAccessToken',
+          { accessToken: data.access_token });
         $scope.generateButtonLabel = labels.generate;
       };
+
       var onError = function (error) {
         console.warn("An error occured: #{error})");
       }

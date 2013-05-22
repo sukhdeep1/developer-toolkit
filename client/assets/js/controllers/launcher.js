@@ -30,17 +30,15 @@ angular.module('developer-toolkit')
     $scope.backToSearch = function () {
       $location
         .search('itemId', null)
-        .search('clientId', null)
-        .search('clientSecret', null)
         .path('/search');
     };
 
 
-    if($routeParams.accessToken && $routeParams.clientId){
-      $scope.$emit('setTokenAndClientId', $routeParams);
+    if($routeParams.accessToken){
+      $scope.$emit('setAccessToken', $routeParams);
     }
 
-    if (!$routeParams.itemId || !$routeParams.clientId) {
+    if (!$routeParams.itemId) {
       $scope.backToSearch();
       return;
     }
