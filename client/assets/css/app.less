@@ -29,7 +29,7 @@ body {
     background: url('/images/cs-primary-small.png') no-repeat;
   }
 
-  a{
+  a {
     cursor: pointer;
   }
 }
@@ -46,25 +46,51 @@ body {
     padding: 10px;
   }
   .form-inline {
+    *{
+      margin: 5px;
+    }
     label {
       font-size: 13px;
       color: @grey;
     }
-    * {
-      margin: 5px;
-    }
   }
 }
 
-.launcher{
+.launcher {
 
   .CodeMirror {
     height: 520px;
     font-size: 13px;
   }
 
+  .buttons {
+    button {
+      margin: 5px;
+    }
+  }
 
-  textarea{
+  .form-horizontal {
+    input[type=text].controls {
+      margin-left: 20px;
+    }
+    .js-override{
+      font-style: italic;
+      color: @grey;
+      margin-left: 10px;
+      *{
+        padding: 5px;
+        margin-left: 10px;
+      }
+    }
+    .controls {
+      .nudge-down{
+        position: relative;
+        top: 5px;
+      }
+    }
+  }
+
+  textarea {
     width: 100%;
     height: 800px;
   }

@@ -1,0 +1,7 @@
+mixin input(key, label, addOverrides)
+  .control-group(ng-show="show('#{key}')")
+    label.control-label #{label}
+    input.controls( type="text", ng-model="options.#{key}", name="#{key}")
+    - if(addOverrides !== false)
+      span.js-override Allow js override?
+        input(type="checkbox", ng-model="overrides.#{key}", name="overrides.#{key}")
