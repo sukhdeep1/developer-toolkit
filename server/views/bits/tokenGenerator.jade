@@ -1,11 +1,7 @@
 .token-generator(ng-controller="TokenGenerator")
   .well
-
     .form-inline
-      label Access Token
-      input.input(type="text", placeholder="your token here..", ng-model="appVars.accessToken")
-      label Generate one
-      input.input(type="text", placeholder="clientId", ng-model="clientId")
-      input.input(type="text", placeholder="clientSecret", ng-model="clientSecret")
+      input.input(type="text", placeholder="clientId", ng-model="appVars.clientId")
+      input.input(type="text", placeholder="clientSecret", ng-model="appVars.clientSecret")
       button.btn-small.btn-success(ng-click="generateToken()") {{generateButtonLabel}}
-
+      input.input(type="text", placeholder="your token here..", ng-model="appVars.accessToken")

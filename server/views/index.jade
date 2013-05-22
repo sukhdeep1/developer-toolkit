@@ -1,8 +1,9 @@
 extends layout
 
 block head
-  != css("app")
   link(href="/components/codemirror/lib/codemirror.css", rel="stylesheet")
+  link(href="/components/codemirror/theme/elegant.css", rel="stylesheet")
+  != css("app")
 
 block content
   .root(ng-app="developer-toolkit", ng-controller="Root")

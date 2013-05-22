@@ -10,4 +10,4 @@ form.form-horizontal.launcher
         input.controls(type="radio", ng-model="$parent.mode", name="mode", value="{{m.mode}}")
         | {{m.mode}}
 
-  textarea( ui-codemirror="codemirrorOptions", ng-model="x")
+  textarea( ui-codemirror="codemirrorOptions", style="height: 500px",ng-model="editorText")

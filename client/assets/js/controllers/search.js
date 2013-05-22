@@ -3,8 +3,8 @@
   var controller = function ($scope, $routeParams) {
     console.log("Search controller");
 
-    if($routeParams.accessToken){
-      $scope.$emit('setAccessToken', $routeParams.accessToken);
+    if($routeParams.accessToken && $routeParams.clientId){
+      $scope.$emit('setTokenAndClientId', $routeParams);
     }
 
     $scope.$on('searchResultReceived', function(event, result){

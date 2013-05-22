@@ -1,5 +1,9 @@
 angular.module('developer-toolkit')
-  .controller('Launcher', ['$scope', '$routeParams', '$location', function ($scope, $routeParams, $location) {
+  .controller('Launcher',
+    ['$scope',
+      '$routeParams',
+      '$location', 'LauncherText',
+      function ($scope, $routeParams, $location, LauncherText) {
 
     $scope.mode = "preview";
     $scope.limitedModes = [
@@ -9,10 +13,14 @@ angular.module('developer-toolkit')
       {mode: "aggregate", show: ["assessmentId","itemId"] }
     ];
 
+    $scope.editorText = LauncherText.template("url", "id", "options");
+
     $scope.codemirrorOptions = {
       lineWrapping : true,
       lineNumbers: true,
-      //readOnly: 'nocursor',
+      height: 500,
+      theme: 'elegant',
+      readOnly: 'nocursor',
       mode: 'htmlmixed'
     };
 
@@ -20,15 +28,19 @@ angular.module('developer-toolkit')
 
 
     $scope.backToSearch = function () {
-      $location.search('itemId', null).path('/search');
+      $location
+        .search('itemId', null)
+        .search('clientId', null)
+        .search('clientSecret', null)
+        .path('/search');
     };
 
 
-    if($routeParams.accessToken){
-      $scope.$emit('setAccessToken', $routeParams.accessToken);
+    if($routeParams.accessToken && $routeParams.clientId){
+      $scope.$emit('setTokenAndClientId', $routeParams);
     }
 
-    if (!$routeParams.itemId) {
+    if (!$routeParams.itemId || !$routeParams.clientId) {
       $scope.backToSearch();
       return;
     }
