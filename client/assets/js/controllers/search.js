@@ -1,46 +1,25 @@
-angular.module('developer-toolkit')
-  .controller('Search',
-    ['$scope', '$rootScope','Collections', 'ItemSearch',
-      function ($scope, $root, Collections, ItemSearch) {
+(function () {
 
-        $scope.resetForm = function () {
-          console.log("resetForm");
-          $scope.keyword = null;
-        };
+  var controller = function ($scope, $routeParams) {
+    console.log("Search controller");
 
-        $scope.updateCollections = function (token) {
-          console.log("updateCollections");
-          if (token) {
-            Collections.get({access_token: token},
-              function (data) {
-                $scope.collections = data;
-              });
-          } else {
-            $scope.collections = [];
-          }
-        };
+    if($routeParams.accessToken){
+      $scope.$emit('setAccessToken', $routeParams.accessToken);
+    }
 
-        $root.$watch('accessToken', function (newToken) {
-          $scope.resetForm();
-          $scope.updateCollections(newToken);
-        });
+    $scope.$on('searchResultReceived', function(event, result){
+      $scope.appVars.searchCount = result.count;
+      $scope.appVars.searchItems = result.data;
+    });
 
-        $scope.search = function () {
+    $scope.$watch('appVars.accessToken', function(){
+     $scope.appVars.searchCount = 0;
+     $scope.appVars.searchItems = [];
+    });
 
-          ItemSearch.query(
-            $root.accessToken,
-            {searchText: $scope.keyword, collection: $scope.collection },
-            0,
-            50,
-            function (result) {
+  };
 
-              $root.$broadcast('searchResultReceived', result);
-              //console.log("Got a result: " + result);
-              //$parent.items = result.data;
-              //$parent.count = result.count;
-            },
-            function (error) {
-              console.warn("An error occurred");
-            });
-        };
-      }]);
+  angular.module('developer-toolkit').controller('Search', ['$scope', '$routeParams', controller ]);
+
+}).call(this);
+

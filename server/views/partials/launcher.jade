@@ -1,0 +1,13 @@
+h4 Launcher
+a(ng-click="backToSearch()") << Search
+
+
+form.form-horizontal.launcher
+  .control-group
+    label.control-label Mode
+    .controls(style="position:relative;left: 10px;")
+      label.inline.radio(ng-repeat="m in modes")
+        input.controls(type="radio", ng-model="$parent.mode", name="mode", value="{{m.mode}}")
+        | {{m.mode}}
+
+  textarea( ui-codemirror="codemirrorOptions", ng-model="x")

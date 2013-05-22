@@ -1,6 +1,6 @@
 .container
   .navbar.navbar-fixed-top
-    .navbar-inner
+    .navbar-inner(ng-controller="Navbar")
       ul.nav
         span.corespring-logo
         a.brand Player - Developer Toolkit
@@ -8,7 +8,9 @@
         li
 
       ul.pull-right.nav
-        li.active
-          a Find Items
-        li
-          a Api Console
+        li(ng-class="{active: isActive('/search')}")
+          a(ng-click="navTo('/search')") Find Items
+        li(ng-class="{active: isActive('/launcher')}")
+          a(ng-click="navTo('/launcher')") Launcher
+        li(ng-class="{active: isActive('/api')}")
+          a(ng-click="navTo('/api')") Api Console

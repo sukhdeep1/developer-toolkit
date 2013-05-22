@@ -41,6 +41,7 @@ angular.module('developer-toolkit')
 
         $scope.getCode = function(item){
           console.log("getCode: " + item);
+          $scope.$emit('launchItem', item);
         }
 
       }]);

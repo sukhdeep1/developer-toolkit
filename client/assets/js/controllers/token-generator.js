@@ -1,5 +1,5 @@
 angular.module('developer-toolkit')
-  .controller('TokenGenerator', [ '$scope', '$rootScope', 'AccessToken', function ($scope, $rootScope, AccessToken) {
+  .controller('TokenGenerator', [ '$scope', 'AccessToken', function ($scope, AccessToken) {
 
     var labels = {
       generate: "Generate",
@@ -10,7 +10,7 @@ angular.module('developer-toolkit')
 
     $scope.generateToken = function () {
       var onSuccess = function (data) {
-        $rootScope.accessToken = data.access_token;
+        $scope.$emit('setAccessToken', data.access_token);
         $scope.generateButtonLabel = labels.generate;
       };
       var onError = function (error) {
@@ -19,13 +19,6 @@ angular.module('developer-toolkit')
       $scope.generateButtonLabel = labels.loading;
       AccessToken.generate($scope.clientId, $scope.clientSecret, onSuccess, onError);
     };
-
-    $scope.$watch('accessToken', function (newValue) {
-      if (newValue) {
-        $rootScope.accessToken = newValue;
-      }
-    });
-
 
   }]);
 

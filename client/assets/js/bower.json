@@ -7,7 +7,8 @@
     "underscore": "latest",
     "jquery": "latest",
     "bootstrap": "http://twitter.github.com/bootstrap/assets/bootstrap.zip",
-    "angular-ui-utils" : "latest",
+    "angular-ui" : "latest",
+    "codemirror" : "latest",
     "corespring-ng-services" : "git@github.com:corespring/corespring-ng-services.git"
   }
 }

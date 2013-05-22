@@ -15,7 +15,7 @@ app.set('view engine', 'jade');
 //Only serve images - the less + coffee will be served by connect-assets
 app.use('/images', express.static(__dirname + '/client/assets/img'));
 //Bootstrap gets a special mapping
-app.use('/bootstrap', express.static(__dirname + '/client/assets/js/components/bootstrap'));
+app.use('/components', express.static(__dirname + '/client/assets/js/components'));
 app.use(express.bodyParser());
 
 routes.init(app);

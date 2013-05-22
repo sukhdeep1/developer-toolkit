@@ -1,13 +1,14 @@
 angular.module('developer-toolkit', [
     'corespring-ng-services',
     'corespring-ng-utils',
-    'ui.jq',
+    'ui',
     'ngResource'])
   .config(['$routeProvider', function ($router) {
     $router
-      .when('/player', {templateUrl: '/partials/player', controller: "Player"})
+      .when('/search', {templateUrl: '/partials/search', controller: "Search"})
       .when('/api', {templateUrl: '/partials/api', controller: "Api"})
-      .otherwise({redirectTo: '/player'});
+      .when('/launcher', {templateUrl: '/partials/launcher', controller: "Launcher"})
+      .otherwise({redirectTo: '/search'});
   }]);
 
 

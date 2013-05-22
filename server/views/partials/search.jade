@@ -1,6 +1,5 @@
 include ../mixins/search
-
-.search-and-results(ng-controller="Player", ng-show="accessToken")
+.search-and-results(ng-show="appVars.accessToken")
   mixin search-form("Find Items")
   .search-results(ng-controller="SearchResults")
     .item
@@ -12,7 +11,7 @@ include ../mixins/search
           th.type Item Type
           th.standard Standard(s)
           th.action Actions
-        tr(ng-repeat="i in items")
+        tr(ng-repeat="i in appVars.searchItems")
           td.title(ng-bind-html-unsafe="i.title")
           td.subject {{renderPrimarySubject(i.primarySubject)}}
           td.grade {{renderGrade(i.gradeLevel)}}
