@@ -10,7 +10,6 @@ See: [this mockup](https://www.easel.io/documents/f815298729882407?mode=preview#
 We assume you have node/npm & bower installed
     
     npm install
+    ./prepublish
     node app.js
     
-### TODO - having to install so many dependencies to run grunt is a bit of a pain.
- ### Is there an easier way to do this?
