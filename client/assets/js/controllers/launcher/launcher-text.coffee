@@ -10,11 +10,6 @@ launchTemplate = (corespringUrl, apiClientId, options, overrides, raw) ->
 <script src="#{corespringUrl}/player.js?apiClientId=#{apiClientId}&options=#{options}"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-
-        var log = function (msg) {
-            var $box = $(".message-box")
-            $box.html($box.html() + "<p>" + msg + "</p>");
-        };
         //Here are the client side overridden options
         var options = #{overrides};
         options.width =  "600px";
@@ -28,7 +23,6 @@ launchTemplate = (corespringUrl, apiClientId, options, overrides, raw) ->
         options.onItemSessionCompleted = function (sessionId) {
           console.log("item session completed.. " + sessionId);
         }
-
 
         var onError = function (err) {
             throw "Error loading test player: " + err.msg;
