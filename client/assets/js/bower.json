@@ -7,9 +7,9 @@
     "underscore": "latest",
     "jquery": "latest",
     "angular-ui" : "latest",
-    "corespring-bootstrap-datepicker" : "git@github.com:corespring/bootstrap-datepicker.git",
+    "corespring-bootstrap-datepicker" : "git://github.com/corespring/bootstrap-datepicker.git",
     "bootstrap": "http://twitter.github.com/bootstrap/assets/bootstrap.zip",
     "codemirror" : "latest",
-    "corespring-ng-services" : "git@github.com:corespring/corespring-ng-services.git"
+    "corespring-ng-services" : "git://github.com/corespring/corespring-ng-services.git"
   }
 }
