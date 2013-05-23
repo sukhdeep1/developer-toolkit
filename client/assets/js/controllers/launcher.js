@@ -3,14 +3,14 @@ angular.module('developer-toolkit')
     ['$scope',
       '$routeParams',
       '$location',
-      'LauncherText',
+      'LauncherTemplate',
       'EncryptOptions',
       'CorespringConfig',
-      function ($scope, $routeParams, $location, LauncherText, EncryptOptions, CorespringConfig) {
+      function ($scope, $routeParams, $location, LauncherTemplate, EncryptOptions, CorespringConfig) {
 
         $scope.mode = "preview";
         $scope.modes = [
-          {mode: "preview", show: ["itemId", "expires"]},
+          {mode: "preview", show: ["itemId", "sessionId", "expires"]},
           {mode: "render", show: ["sessionId", "expires"]},
           {mode: "administer", show: ["sessionId", "itemId", "expires"]},
           {mode: "aggregate", show: ["assessmentId", "itemId", "expires"] }
@@ -72,6 +72,12 @@ angular.module('developer-toolkit')
             }
           };
 
+          var addId = function(obj, key){
+            if($scope.show(key)){
+              obj[key] = $scope.options[key];
+            }
+          }
+
           var serverOptions = {};
           addWildcard(serverOptions, "itemId", "*");
           addWildcard(serverOptions, "sessionId", "*");
@@ -79,23 +85,37 @@ angular.module('developer-toolkit')
 
 
           var clientOptions = {};
-          addWildcard(clientOptions, "itemId", $scope.options.itemId);
-          addWildcard(clientOptions, "sessionId", $scope.options.sessionId);
-          addWildcard(clientOptions, "mode", $scope.options.mode);
+          //Note - mode is mandatory on the client side
+          clientOptions.mode = $scope.options.mode;
+          addId(clientOptions, 'itemId');//$scope.options.itemId;
+          addId(clientOptions, 'sessionId');//$scope.options.itemId;
+          addId(clientOptions, 'assessmentId');//$scope.options.itemId;
 
           var optionsToEncrypt = _.extend(_.clone($scope.options), serverOptions);
-          var overrides = $scope.options;
-          console.log("clientOptions: ", clientOptions);
+
+          $scope.clientSideOptions = clientOptions;
+
           var onSuccess = function (data) {
+            $scope.encryptionResult = data;
             $scope.updateTemplate(data.clientId, data.options, JSON.stringify(clientOptions), data.request);
           };
 
           $scope.encryptOptions(optionsToEncrypt, onSuccess);
         };
 
+        $scope.prettify = function(s){
+          try{
+            var obj = JSON.parse(s);
+            return JSON.stringify(obj, undefined, 2);
+          } catch (e) {
+           return s;
+          }
+        };
+
         $scope.updateTemplate = function (clientId, encryptedOptions, overrides, raw) {
           var url = CorespringConfig.url;
-          $scope.editorText = LauncherText.template(url, clientId, encryptedOptions, overrides, raw);
+          var prettyJson = $scope.prettify(raw);
+          $scope.editorText = LauncherTemplate.template(url, clientId, encryptedOptions, overrides, prettyJson);
         };
 
         $scope.encryptOptions = function (opts, onSuccess) {
@@ -129,5 +149,14 @@ angular.module('developer-toolkit')
             }
           }
         });
+
+        $scope.previewInNewWindow = function(){
+          var out = ["clientId=" + $scope.encryptionResult.clientId,
+            "encrypted=" + $scope.encryptionResult.options,
+            "overrides=" + JSON.stringify($scope.clientSideOptions)
+            ];
+
+          window.open('/run-launcher?' + out.join("&"), '_blank');
+        };
 
       }]);

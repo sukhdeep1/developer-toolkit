@@ -12,6 +12,8 @@ block content
     .main-content
       include bits/tokenGenerator
       .main-view(ng-view)
+
+
 block scripts
   != js("app")
 
@@ -22,5 +24,20 @@ block scripts
       .factory('CorespringConfig', [function (){
          return {
            url: "#{corespringUrl}"
+         }
+    }]);
+    angular.module('developer-toolkit')
+      .factory('LauncherTemplate', [function (){
+
+         var launchTemplate = "!{jsString(launchTemplate)}";
+         return {
+           template: function(url,clientId,encrypted,overrides,unencrypted){
+              return launchTemplate
+                .replace("\#{url}", url)
+                .replace("\#{clientId}", clientId)
+                .replace("\#{encrypted}", encrypted)
+                .replace("\#{overrides}", overrides)
+                .replace("\#{unencrypted}", unencrypted)
+           }
          }
     }]);
