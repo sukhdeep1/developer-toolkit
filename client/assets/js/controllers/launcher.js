@@ -66,6 +66,7 @@ angular.module('developer-toolkit')
         }, true);
 
         $scope.$watch('overrides', function (a,b) {
+          var equal = true;
           for (var k in a) {
             if (a[k] != b[k]) equal = false;
           }
