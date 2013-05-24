@@ -1,8 +1,8 @@
 .token-generator(ng-controller="TokenGenerator")
   .well
     form(ng-submit="generateToken()").form-inline
-      input.input(type="text", placeholder="clientId", ng-model="appVars.clientId", required)
-      input.input(type="text", placeholder="clientSecret", ng-model="appVars.clientSecret", required)
+      input.input(id='clientId',type="text", placeholder="clientId", ng-model="appVars.clientId", required)
+      input.input(id='clientSecret',type="text", placeholder="clientSecret", ng-model="appVars.clientSecret", required)
       button.btn-small.btn-success(type="submit") {{generateButtonLabel}}
       input.input(type="text", placeholder="your token here..", ng-model="appVars.accessToken")
       .error(ng-show="errorMessage") {{errorMessage}}

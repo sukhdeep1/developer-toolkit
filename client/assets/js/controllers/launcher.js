@@ -55,14 +55,24 @@ angular.module('developer-toolkit')
           mode: false
         }
 
+        $scope.$watch('appVars.accessToken', function (a,b) {
+          if (a != b) {
+            $scope.reRender();
+          }
+        });
+
         $scope.$watch('options', function () {
           $scope.reRender();
         }, true);
 
-        $scope.$watch('overrides', function () {
-          $scope.reRender();
+        $scope.$watch('overrides', function (a,b) {
+          for (var k in a) {
+            if (a[k] != b[k]) equal = false;
+          }
+          if (!equal) {
+            $scope.reRender();
+          }
         }, true);
-
 
         $scope.reRender = function(){
 
@@ -121,7 +131,9 @@ angular.module('developer-toolkit')
         $scope.encryptOptions = function (opts, onSuccess) {
           var onError = function (data) {
             console.warn("error: ");
+            $scope.editorText = "Your access token has expired. Please generate a new one at the top of the page.";
           }
+
           EncryptOptions.encrypt($scope.appVars.accessToken, opts, onSuccess, onError);
         };
 
