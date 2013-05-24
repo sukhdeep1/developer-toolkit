@@ -13,7 +13,7 @@
     });
 
     $scope.$watch('appVars.accessToken', function(){
-     $scope.appVars.searchCount = 0;
+     $scope.appVars.searchCount = NaN;
      $scope.appVars.searchItems = [];
     });
 

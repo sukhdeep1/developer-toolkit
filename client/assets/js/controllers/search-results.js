@@ -6,11 +6,6 @@ angular.module('developer-toolkit')
         //Mixin Item Formatter
         angular.extend($scope, ItemFormatter);
 
-        $scope.$on('searchResultReceived', function (event, result) {
-          console.log("event handler: searchResultReceived: " + result);
-          $scope.items = result.data;
-        });
-
         $scope.renderGrade = function (grades) {
           if (!grades) {
             return "";

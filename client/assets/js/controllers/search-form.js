@@ -29,6 +29,11 @@ angular.module('developer-toolkit')
         });
 
         $scope.search = function () {
+          $scope.errorMessage = null;
+          if (!$scope.collection) {
+            $scope.errorMessage = "Please select a collection";
+            return;
+          }
 
           ItemSearch.query(
             $scope.appVars.accessToken,
@@ -40,6 +45,7 @@ angular.module('developer-toolkit')
             },
             function (error) {
               console.warn("An error occurred");
+              $scope.errorMessage = "An error occurred: "+error.message;
             });
         };
       }]);
