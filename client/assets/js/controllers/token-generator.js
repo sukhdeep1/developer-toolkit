@@ -16,9 +16,17 @@ angular.module('developer-toolkit')
       };
 
       var onError = function (error) {
-        console.warn("An error occured: #{error})");
+        console.warn("An error occured: "+error);
+        if (error.client_id)
+          $scope.errorMessage = "Client Id: "+error.client_id[0].toString();
+        else if (error.client_secret)
+          $scope.errorMessage = "Client Secret: "+error.client_secret[0].toString();
+        else
+          $scope.errorMessage = "Error: "+error.message;
+        $scope.generateButtonLabel = labels.generate;
       }
       $scope.generateButtonLabel = labels.loading;
+      $scope.errorMessage = null;
       AccessToken.generate($scope.appVars.clientId, $scope.appVars.clientSecret, onSuccess, onError);
     };
 
