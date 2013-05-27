@@ -1,19 +1,27 @@
 .search-and-results(ng-show="appVars.accessToken && !appVars.apiCallFailed")
-  form(ng-controller="SearchForm")
-    fieldset
-      legend Find Items
-      table
-        tr
-          td
-            label Keyword
-            input(type="text", placeholder="Type something…", ng-model="keyword")
-          td
-            label Collection
-            select(ng-model="collection", ng-options="c.name for c in collections")
-          td
-            label &nbsp;
-            button.btn-primary.pull-left.btn(type="submit", ng-click="search()") Search
-      .error(ng-show="errorMessage") {{errorMessage}}
+  .sub-menu(ng-controller="SearchForm")
+    form.navbar-search.pull-left
+      span Find Items
+      input.nudge(
+        type="text",
+        on-enter="search()",
+        class="search-query",
+        placeholder="Search")
+
+      select.nudge(ui-select2,
+        style="width: 200px;",
+        ng-model="collectionId",
+        data-placeholder="Collection...")
+        option(value="")
+        option(ng-repeat="c in collections", value="{{c.id}}") {{c.name}}
+
+      i.nudge.icon-search(ng-click="search()")
+      span.nudge.label.label-info(ng-show="errorMessage") {{errorMessage}}
+
+    span.search-count.pull-right(ng-show="appVars.searchCount")
+      i.icon-reorder
+      | {{appVars.searchCount}}
+
   .search-results(ng-controller="SearchResults")
     .item
       table
@@ -32,5 +40,7 @@
           td.standard
             a(ui-jq="tooltip", ui-options="{title: buildStandardTooltip(i.standards)}") {{buildStandardLabel(i.standards)}}
           td.action
-            button.btn-success.btn-small(ng-click="getCode(i)") Get Code
+            button.btn-success.btn-small(ng-click="getCode(i)")
+              i.icon-code(style="font-weight:bold; margin-right: 2px;")
+              | Code
     .error(ng-show="appVars.searchCount == 0") No items found

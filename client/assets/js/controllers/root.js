@@ -23,6 +23,7 @@ angular.module('developer-toolkit')
 
       $rootScope.$on('apiCallSucceeded', function (event, item) {
         console.warn("api call succeeded: " + item);
+        $location.search('accessToken', $rootScope.appVars.accessToken);
         $rootScope.appVars.apiCallFailed = false;
       });
 

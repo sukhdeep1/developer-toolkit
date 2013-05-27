@@ -28,18 +28,18 @@ angular.module('developer-toolkit')
         $scope.$watch('appVars.accessToken', function (newToken) {
           $scope.resetForm();
           $scope.updateCollections(newToken);
-        });
+        }, true);
 
         $scope.search = function () {
           $scope.errorMessage = null;
-          if (!$scope.collection) {
+          if (!$scope.collectionId) {
             $scope.errorMessage = "Please select a collection";
             return;
           }
 
           ItemSearch.query(
             $scope.appVars.accessToken,
-            {searchText: $scope.keyword, collection: $scope.collection },
+            {searchText: $scope.keyword, collection: {id:$scope.collectionId} },
             0,
             50,
             function (result) {

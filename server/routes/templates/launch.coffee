@@ -16,7 +16,7 @@ exports.template = (
             <script type="text/javascript" src="#{url}/player.js?apiClientId=#{clientId}&options=#{encrypted}"></script>
             <script type="text/javascript">
               $(document).ready(function () {
-              //Here are the client side overridden encrypted
+              //Here are the client side overridden options
               var options = #{overrides};
               options.width =  "600px";
               options.autoHeight = true;

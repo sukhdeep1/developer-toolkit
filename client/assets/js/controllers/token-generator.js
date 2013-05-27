@@ -16,6 +16,10 @@ angular.module('developer-toolkit')
       return ok;
     }
 
+    $scope.$watch('appVars.accessToken', function(newValue){
+     console.log("[TokenGenerator] access token changed: " + newValue);
+    });
+
     $scope.getIconClass = function(appVars){
       return tokenString(appVars, "icon-token-unknown", "icon-token-not-ok", "icon-token-ok")
     }
@@ -28,7 +32,7 @@ angular.module('developer-toolkit')
     }
 
 
-    $scope.showTokenForm = true;
+    $scope.showTokenForm = false;
 
     $scope.$watch('appVars.apiCallFailed', function (newValue) {
       console.log("TokenGenerator: api call failed: " + newValue);

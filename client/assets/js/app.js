@@ -3,6 +3,7 @@
 //= require "components/angular-resource/angular-resource"
 //= require "components/bootstrap/js/bootstrap"
 //= require "components/underscore/underscore"
+//= require "components/select2/select2"
 //= require "components/angular-ui/build/angular-ui"
 //= require "components/codemirror/lib/codemirror"
 //= require "components/codemirror/mode/xml/xml"
