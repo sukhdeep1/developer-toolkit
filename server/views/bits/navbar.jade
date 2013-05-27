@@ -9,6 +9,10 @@
           include tokenGenerator
 
       ul.pull-right.nav
+        li
+          a(href="http://github.com/corespring/developer-toolkit")
+            i.icon-github(style="font-size: 20px; color: #333333") &nbsp;
+
         li(ng-class="{active: isActive('/search')}")
           a(ng-click="navTo('/search')") Find Items
         li(ng-class="{active: isActive('/launcher')}")
