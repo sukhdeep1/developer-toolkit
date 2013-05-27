@@ -23,7 +23,7 @@ angular.module('developer-toolkit')
           lineNumbers: true,
           height: 500,
           theme: 'elegant',
-          readOnly: 'nocursor',
+          readOnly: true,
           mode: 'htmlmixed'
         };
 
