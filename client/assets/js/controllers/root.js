@@ -16,4 +16,14 @@ angular.module('developer-toolkit')
           .path('/launcher');
       });
 
+      $rootScope.$on('apiCallFailed', function (event, item) {
+        console.warn("api call failed: " + item);
+        $rootScope.appVars.apiCallFailed = true;
+      });
+
+      $rootScope.$on('apiCallSucceeded', function (event, item) {
+        console.warn("api call succeeded: " + item);
+        $rootScope.appVars.apiCallFailed = false;
+      });
+
     }]);

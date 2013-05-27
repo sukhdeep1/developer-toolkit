@@ -6,10 +6,11 @@
     "angular-resource": "latest",
     "underscore": "latest",
     "jquery": "latest",
-    "angular-ui" : "latest",
-    "corespring-bootstrap-datepicker" : "git://github.com/corespring/bootstrap-datepicker.git",
+    "angular-ui": "latest",
+    "corespring-bootstrap-datepicker": "git://github.com/corespring/bootstrap-datepicker.git",
     "bootstrap": "http://twitter.github.com/bootstrap/assets/bootstrap.zip",
-    "codemirror" : "latest",
-    "corespring-ng-services" : "git://github.com/corespring/corespring-ng-services.git"
+    "codemirror": "latest",
+    "corespring-ng-services": "git://github.com/corespring/corespring-ng-services.git",
+    "components-font-awesome": "~3.1.0"
   }
 }

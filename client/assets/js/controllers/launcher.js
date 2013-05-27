@@ -133,9 +133,15 @@ angular.module('developer-toolkit')
           var onError = function (data) {
             console.warn("error: ");
             $scope.editorText = "Your access token has expired. Please generate a new one at the top of the page.";
+            $scope.$emit('apiCallFailed', 'encrypt-options');
           }
 
-          EncryptOptions.encrypt($scope.appVars.accessToken, opts, onSuccess, onError);
+          var s = function(data){
+            onSuccess(data);
+            $scope.$emit('apiCallSucceeded', 'encrypt-options');
+          }
+
+          EncryptOptions.encrypt($scope.appVars.accessToken, opts, s, onError);
         };
 
         $scope.copyToClipboard = function () {

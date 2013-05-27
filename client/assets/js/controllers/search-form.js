@@ -14,9 +14,11 @@ angular.module('developer-toolkit')
             Collections.get({access_token: token},
               function (data) {
                 $scope.collections = data;
+                $scope.$emit('apiCallSucceeded', 'collections');
               },
               function error(e){
                 $scope.collections = [];
+                $scope.$emit('apiCallFailed', 'collections');
               });
           } else {
             $scope.collections = [];

@@ -6,11 +6,10 @@
         a.brand Player - Developer Toolkit
       ul.nav
         li
+          include tokenGenerator
 
       ul.pull-right.nav
         li(ng-class="{active: isActive('/search')}")
           a(ng-click="navTo('/search')") Find Items
         li(ng-class="{active: isActive('/launcher')}")
           a(ng-click="navTo('/launcher')") Launcher
-        li(ng-class="{active: isActive('/api')}")
-          a(ng-click="navTo('/api')") Api Console

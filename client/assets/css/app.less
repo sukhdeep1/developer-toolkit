@@ -5,10 +5,6 @@ body {
   font-family: 'Ubuntu', sans-serif;
 }
 
-body {
-
-}
-
 .navbar {
 
   .brand {
@@ -133,7 +129,66 @@ body {
     }
   }
 }
+.mixin-no-user-select{
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 
 .error {
   color: #ff0000;
+}
+
+.content-toggler{
+  position: relative;
+  top: 10px;
+  @toggler-width: 276px;
+  #button{
+    cursor: pointer;
+    .mixin-no-user-select;
+
+    .token-label{
+      font-size: 12px;
+      position: relative;
+      top: -2px;
+      left: 5px;
+    }
+  }
+  #content{
+    width: @toggler-width;
+    position: absolute;
+    top: 20px;
+    left: -1 * (@toggler-width / 2) + 5px;
+
+  }
+
+
+}
+
+.icon-token-not-ok,
+.icon-token-unknown,
+.icon-token-ok{
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.32);
+}
+
+.icon-token-unknown{
+  color: grey;
+  &:before{
+    content: "\f059";
+  }
+}
+.icon-token-not-ok{
+  color: #cd302c;
+  &:before{
+    content: "\F06A";
+  }
+}
+.icon-token-ok{
+  color: darken(@green, 10%);
+  &:before{
+    content: "\f058";
+  }
 }
