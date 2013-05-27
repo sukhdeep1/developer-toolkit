@@ -1,4 +1,4 @@
-.search-and-results(ng-show="appVars.accessToken")
+.search-and-results(ng-show="appVars.accessToken && !appVars.apiCallFailed")
   form(ng-controller="SearchForm")
     fieldset
       legend Find Items
