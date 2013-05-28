@@ -8,6 +8,7 @@ angular.module('developer-toolkit')
           $scope.keyword = null;
         };
 
+
         $scope.updateCollections = function (token) {
           console.log("updateCollections");
           if (token) {
@@ -16,7 +17,7 @@ angular.module('developer-toolkit')
                 $scope.collections = data;
                 $scope.$emit('apiCallSucceeded', 'collections');
               },
-              function error(e){
+              function error(e) {
                 $scope.collections = [];
                 $scope.$emit('apiCallFailed', 'collections');
               });
@@ -30,24 +31,48 @@ angular.module('developer-toolkit')
           $scope.updateCollections(newToken);
         }, true);
 
+        var lastSearchId = null;
+
+        var itemSearch = function (searchUid, skip, resultHandler) {
+
+          ItemSearch.query(
+            $scope.appVars.accessToken,
+            {searchText: $scope.keyword, collection: {id: $scope.collectionId} },
+            skip,
+            50,
+            function (result) {
+              if (searchUid == lastSearchId) {
+                resultHandler(result);
+              }
+            },
+            function (error) {
+              if (searchUid == lastSearchId) {
+                console.warn("An error occurred");
+                $scope.errorMessage = "An error occurred: " + error.message;
+              }
+            });
+        };
+
+        $scope.$on("loadMoreSearchResults", function () {
+          console.log("SearchForm -> load more..");
+          lastSearchId = new Date().getTime();
+          itemSearch(lastSearchId, $scope.appVars.searchItems.length, $scope.moreSearchResultsReceived);
+        });
+
+
         $scope.search = function () {
+
           $scope.errorMessage = null;
+
           if (!$scope.collectionId) {
             $scope.errorMessage = "Please select a collection";
             return;
           }
 
-          ItemSearch.query(
-            $scope.appVars.accessToken,
-            {searchText: $scope.keyword, collection: {id:$scope.collectionId} },
-            0,
-            50,
-            function (result) {
-              $scope.$emit('searchResultReceived', result);
-            },
-            function (error) {
-              console.warn("An error occurred");
-              $scope.errorMessage = "An error occurred: "+error.message;
-            });
-        };
-      }]);
+          $scope.clearCurrentSearch();
+          lastSearchId = new Date().getTime();
+          itemSearch(lastSearchId, 0, $scope.searchResultsReceived);
+        }
+      }
+
+    ]);

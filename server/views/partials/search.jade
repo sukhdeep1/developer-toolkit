@@ -43,7 +43,7 @@
           th.type Item Type
           th.standard Standard(s)
           th.action Actions
-    .item
+    .item(when-scrolled="loadMore()", scrolled-mode="window")
       table
         tr(ng-repeat="i in appVars.searchItems")
           td.title(ng-bind-html-unsafe="i.title")

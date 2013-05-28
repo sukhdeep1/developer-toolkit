@@ -1,6 +1,7 @@
 angular.module('developer-toolkit', [
     'corespring-ng-services',
     'corespring-ng-utils',
+    'cs.directives',
     'ui',
     'ngResource'])
   .config(['$routeProvider', function ($router) {

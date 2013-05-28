@@ -39,4 +39,5 @@ angular.module('developer-toolkit')
           $scope.$emit('launchItem', item);
         }
 
+
       }]);

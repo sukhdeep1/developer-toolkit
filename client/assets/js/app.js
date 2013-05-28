@@ -12,6 +12,7 @@
 //= require "components/codemirror/mode/css/css"
 //= require "components/corespring-bootstrap-datepicker/js/bootstrap-datepicker"
 //= require_tree "components/corespring-ng-services/lib"
+//= require "components/corespring-ng-components/build/corespring-ng-components"
 //= require "developer-toolkit"
 //= require_tree "directives"
 //= require_tree "controllers"

@@ -11,6 +11,7 @@
     "bootstrap": "http://twitter.github.com/bootstrap/assets/bootstrap.zip",
     "codemirror": "latest",
     "corespring-ng-services": "git://github.com/corespring/corespring-ng-services.git",
+    "corespring-ng-components": "git://github.com/corespring/corespring-ng-components.git",
     "components-font-awesome": "~3.1.0",
     "select2": "3.2"
   }
