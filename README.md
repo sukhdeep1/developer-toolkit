@@ -13,3 +13,9 @@ We assume you have node/npm & bower installed
     ./prepublish
     node app.js
     
+## Pointing the app to corespring.org
+
+You'll need to specify the corespring url as an env var.
+
+    export CORESPRING_URL="https://corespring.org"
+    
