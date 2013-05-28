@@ -34,6 +34,7 @@ angular.module('developer-toolkit')
         var lastSearchId = null;
 
         var itemSearch = function (searchUid, skip, resultHandler) {
+          $scope.searchInProgress = true;
 
           ItemSearch.query(
             $scope.appVars.accessToken,
@@ -43,12 +44,14 @@ angular.module('developer-toolkit')
             function (result) {
               if (searchUid == lastSearchId) {
                 resultHandler(result);
+                $scope.searchInProgress = false;
               }
             },
             function (error) {
               if (searchUid == lastSearchId) {
                 console.warn("An error occurred");
                 $scope.errorMessage = "An error occurred: " + error.message;
+                $scope.searchInProgress = false;
               }
             });
         };

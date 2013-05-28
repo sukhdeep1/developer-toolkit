@@ -75,7 +75,7 @@ body {
     color: lighten(@grey, 40%);
 
     .search-count {
-      margin-top: 8px;
+      margin-top: 10px;
       margin-right: 20px;
       * {
         margin-right: 5px;
@@ -175,21 +175,25 @@ body {
     height: 800px;
   }
 }
-.welcome-view{
-  .hero-unit{
-    h1{
-      font-weight: lighter;
-      color: darken(@grey, 10%);
-    }
-    .icon-hand-up{
-      margin-left: 10px;
-      margin-right: 10px;
-      font-size: 30px;
-    }
-    p{
-      color: darken(@grey, 20%);
-    }
+
+
+.hero-unit{
+  h1,h2,h3,h4,h5{
+    font-weight: lighter;
+    color: darken(@grey, 10%);
   }
+
+  [class^="icon-"],
+  [class*=" icon-"]{
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  p{
+    color: darken(@grey, 20%);
+  }
+}
+
+.welcome-view{
 }
 .search-and-results {
 

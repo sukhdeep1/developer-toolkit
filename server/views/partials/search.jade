@@ -29,9 +29,12 @@
       i.nudge.icon-search(ng-click="search()")
       span.nudge.label.label-info(ng-show="errorMessage") {{errorMessage}}
 
+      span.nudge.label.label-success(ng-show="searchInProgress") Loading...
+
     span.search-count.pull-right(ng-show="appVars.searchCount")
       i.icon-reorder
       | {{appVars.searchCount}}
+
 
   .search-results(ng-controller="SearchResults")
     .header
@@ -56,4 +59,8 @@
             button.btn-success.btn-small(ng-click="getCode(i)")
               i.icon-code(style="font-weight:bold; margin-right: 2px;")
               | Code
-    .error(ng-show="appVars.searchCount == 0") No items found
+    .no-items-found(ng-show="appVars.searchCount == 0")
+      .hero-unit
+        h3
+          | No items found
+          i.icon-meh
