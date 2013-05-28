@@ -1,12 +1,19 @@
 @grey: #8a8d8e;
 @green: #92d300;
+@bar-height: 40px;
+
+.mixin-box-shadow(@opacity: 0.3) {
+  -webkit-box-shadow: 0px 5px 10px rgba(0, 0, 0, @opacity);
+  -moz-box-shadow: 0px 5px 10px rgba(0, 0, 0, @opacity);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, @opacity);
+}
 
 body {
   font-family: 'Ubuntu', sans-serif;
   background-color: lighten(desaturate(@green, 40%), 50%);
 
   .navbar-fixed-top {
-    .navbar-inner{
+    .navbar-inner {
       border-bottom: solid 1px lighten(@grey, 10%);
     }
 
@@ -39,232 +46,257 @@ body {
   }
 }
 
-.mixin-bg-gradient(@from, @to){
+.mixin-bg-gradient(@from, @to) {
   background: -moz-linear-gradient(top,  @from 0%, @to 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@from), color-stop(100%,@to));
   background: -webkit-linear-gradient(top,  @from 0%,@to 100%);
   background: -o-linear-gradient(top,  @from 0%,@to 100%);
   background: -ms-linear-gradient(top,  @from 0%,@to 100%);
   background: linear-gradient(to bottom,  @from 0%,@to 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00000000',GradientType=0 );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#00000000', GradientType=0);
 }
 
 .main-content {
   position: relative;
   top: 40px;
 
-  .sub-menu{
+  .sub-menu {
     width: 100%;
-    height: 42px;
+    height: @bar-height;
+    position: fixed;
+    top: @bar-height;
     padding: 0px;
     margin-left: 0px;
-    padding-top:5px;
+    padding-top: 5px;
     padding: 0px;
     .mixin-bg-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0) );
-    background-color: darken(@grey,20%);
+    background-color: darken(@grey, 20%);
     border-bottom: solid 1px darken(@grey, 10%);
     color: lighten(@grey, 40%);
 
-
-    .search-count{
+    .search-count {
       margin-top: 8px;
       margin-right: 20px;
-      *{
+      * {
         margin-right: 5px;
       }
 
-    .icon-reorder{
-      color: lighten(@green, 40%);
-    }
-  }
-  .navbar-search{
-    padding-top: 3px;
-    .nudge{
-      margin-left: 10px;
-    }
-    /**{
-      margin-left: 10px;
-    }*/
-
-    select{
-      width: 140px;
-    }
-
-    .icon-search{
-      cursor: pointer;
-      font-size: 18px;
-      color: white;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.82);
-
-      &:hover{
-        opacity: 0.5;
+      .icon-reorder {
+        color: lighten(@green, 40%);
       }
     }
-  }
-  .search-query{
-    @border-radius: 4px;
-    padding: 3px;
-    -webkit-border-radius: @border-radius;
-    -moz-border-radius: @border-radius;
-    border-radius: @border-radius;
-  }
+    .navbar-search {
+      padding-top: 3px;
+      .nudge {
+        margin-left: 10px;
+      }
+      /**{
+        margin-left: 10px;
+      }*/
 
-}
+      select {
+        width: 140px;
+      }
+
+      .icon-search {
+        cursor: pointer;
+        font-size: 18px;
+        color: white;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.82);
+
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+    }
+    .search-query {
+      @border-radius: 4px;
+      padding: 3px;
+      -webkit-border-radius: @border-radius;
+      -moz-border-radius: @border-radius;
+      border-radius: @border-radius;
+    }
+
+  }
 }
 
 .token-generator {
-margin: 0px;
-.well {
-  padding: 10px;
-}
-.form-inline {
-  *{
-    margin: 5px;
+  margin: 0px;
+  .well {
+    padding: 10px;
   }
-  label {
-    font-size: 13px;
-    color: @grey;
+  .form-inline {
+    * {
+      margin: 5px;
+    }
+    label {
+      font-size: 13px;
+      color: @grey;
+    }
   }
-}
 }
 
 .launcher {
 
-.CodeMirror {
-  height: 520px;
-  font-size: 13px;
-}
-
-.buttons {
-  button {
-    margin: 5px;
+  .CodeMirror {
+    height: 520px;
+    font-size: 13px;
   }
-}
 
-.form-horizontal {
-  input[type=text].controls {
-    margin-left: 20px;
+  .buttons {
+    button {
+      margin: 5px;
+    }
   }
-  .js-override{
-    font-style: italic;
-    color: @grey;
-    margin-left: 10px;
-    *{
-      padding: 5px;
+
+  .form-horizontal {
+    input[type=text].controls {
+      margin-left: 20px;
+    }
+    .js-override {
+      font-style: italic;
+      color: @grey;
       margin-left: 10px;
+      * {
+        padding: 5px;
+        margin-left: 10px;
+      }
+    }
+    .controls {
+      .nudge-down {
+        position: relative;
+        top: 5px;
+      }
     }
   }
-  .controls {
-    .nudge-down{
-      position: relative;
-      top: 5px;
-    }
-  }
-}
 
-textarea {
-  width: 100%;
-  height: 800px;
-}
+  textarea {
+    width: 100%;
+    height: 800px;
+  }
 }
 
 .search-and-results {
 
-td {
-  padding: 5px;
-  button {
-    margin-bottom: 10px;
+  td {
+    padding: 5px;
+    button {
+      margin-bottom: 10px;
+    }
   }
-}
 
-.search-results {
-  table {
-    width: 100%;
-    tr {
-      border-bottom: solid 1px lighten(@grey, 30%);
-      th, td {
-        text-align: left;
-        vertical-align: top;
+  .search-results {
+
+    .item {
+      margin-top: @bar-height * 2;
+    }
+    .header {
+      position: fixed;
+      top: @bar-height * 2;
+      width: 100%;
+      background: white;
+      height:@bar-height;
+      table {
+        height: 100%;
+        th {
+          vertical-align: bottom;
+          border-bottom: solid 1px lighten(@grey, 20%);
+          font-weight: lighter;
+          color: @grey;
+        }
       }
-      .action {
-        width: 100px;
-      }
-      .type {
-        width: 270px;
-      }
-      .subject {
-        width: 140px;
-      }
-      .standard {
-        width: 80px;
-      }
-      .grade {
-        width: 80px;
+      .mixin-box-shadow(0.2);
+    }
+    table {
+      width: 100%;
+      tr {
+        border-bottom: solid 1px lighten(@grey, 30%);
+        th, td {
+          text-align: left;
+          vertical-align: top;
+          background-color: white;
+        }
+        .action {
+          width: 100px;
+        }
+        .type {
+          width: 270px;
+        }
+        .subject {
+          width: 140px;
+        }
+        .standard {
+          width: 80px;
+        }
+        .grade {
+          width: 80px;
+        }
       }
     }
   }
 }
-}
-.mixin-no-user-select{
--webkit-touch-callout: none;
--webkit-user-select: none;
--khtml-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
-user-select: none;
+
+.mixin-no-user-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .error {
-color: #ff0000;
+  color: #ff0000;
 }
 
-.content-toggler{
-position: relative;
-top: 10px;
-@toggler-width: 276px;
-#button{
-  cursor: pointer;
-  .mixin-no-user-select;
+.content-toggler {
+  position: relative;
+  top: 10px;
+  @toggler-width: 276px;
+  #button {
+    cursor: pointer;
+    .mixin-no-user-select;
 
-  .token-label{
-    font-size: 12px;
-    position: relative;
-    top: -2px;
-    left: 5px;
+    .token-label {
+      font-size: 12px;
+      position: relative;
+      top: -2px;
+      left: 5px;
+    }
   }
-}
-#content{
-  width: @toggler-width;
-  position: absolute;
-  top: 20px;
-  left: -1 * (@toggler-width / 2) + 5px;
+  #content {
+    width: @toggler-width;
+    position: absolute;
+    top: 20px;
+    left: -1 * (@toggler-width / 2) + 5px;
 
-}
-
+  }
 
 }
 
 .icon-token-not-ok,
 .icon-token-unknown,
-.icon-token-ok{
-text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.32);
+.icon-token-ok {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.32);
 }
 
-.icon-token-unknown{
-color: grey;
-&:before{
-  content: "\f059";
+.icon-token-unknown {
+  color: grey;
+  &:before {
+    content: "\f059";
   }
 }
-.icon-token-not-ok{
+
+.icon-token-not-ok {
   color: #cd302c;
-  &:before{
+  &:before {
     content: "\F06A";
   }
 }
-.icon-token-ok{
+
+.icon-token-ok {
   color: darken(@green, 10%);
-  &:before{
+  &:before {
     content: "\f058";
   }
 }
