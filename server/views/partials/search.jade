@@ -1,3 +1,13 @@
+.welcome-view(ng-show="!appVars.accessToken")
+  .hero-unit
+    h1 Developer Toolkit
+    p
+      | This toolkit allows you to generate and understand the code needed
+      | for launching the CoreSpring Test Player.
+    p
+      | To get started add an access token above
+      i.icon-hand-up
+      | or if you don't have one you can generate one.
 .search-and-results(ng-show="appVars.accessToken && !appVars.apiCallFailed")
   .sub-menu(ng-controller="SearchForm")
     form.navbar-search.pull-left
