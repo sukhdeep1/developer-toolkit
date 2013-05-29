@@ -20,6 +20,7 @@ module.exports = function (grunt) {
           js + '/controllers/**/*.js'],
         options: {
           specs: client + '/spec/specs/**/*-spec.js',
+          helpers: client + '/spec/helpers/**/*-helper.js',
           template: client + '/spec/runner/angular-runner.tmpl'
         }
       }

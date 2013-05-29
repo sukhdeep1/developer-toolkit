@@ -2,31 +2,12 @@
 
 describe('search-results', function () {
 
-  var scope, ctrl, $httpBackend;
-
-  beforeEach(module('developer-toolkit.controllers'));
-
+  var scope = null;
   beforeEach(function () {
-    module(function($provide) {
-      $provide.value('ItemFormatter', {});
-    });
+    scope = helpers.controller.initController('SearchResults', {'ItemFormatter': {}})
   });
 
-  beforeEach(
-    inject(function (_$httpBackend_, $rootScope, $controller) {
-      $httpBackend = _$httpBackend_;
-      scope = $rootScope.$new();
-
-      try {
-        ctrl = $controller('SearchResults', {$scope: scope});
-      } catch (e) {
-        throw("Error with the controller: " + e);
-      }
-    })
-  );
-
   it('should work', function () {
-    console.log("should work: ctrl: " + ctrl);
     expect(scope).toNotBe(null);
     expect(scope.appVars).toBe(undefined);
   });
@@ -57,6 +38,5 @@ describe('search-results', function () {
     scope.getCode({id: "1"});
     expect(eventItem).toEqual({id:"1"});
   });
-
 
 });

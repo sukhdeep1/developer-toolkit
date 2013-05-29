@@ -2,23 +2,12 @@
 
 describe('search', function () {
 
-  var scope, ctrl, $httpBackend;
-
-  beforeEach(module('developer-toolkit.controllers'));
-
-  beforeEach(
-    inject(function (_$httpBackend_, $rootScope, $controller) {
-      $httpBackend = _$httpBackend_;
-      scope = $rootScope.$new();
-      scope.appVars = {};
-
-      try {
-        ctrl = $controller('Search', {$scope: scope});
-      } catch (e) {
-        throw("Error with the controller: " + e);
-      }
+  var scope = null;
+  beforeEach(function () {
+    scope = helpers.controller.initController('Search', {'ItemFormatter': {}}, function (s) {
+      s.appVars = {};
     })
-  );
+  });
 
   it('should init', function () {
     expect(scope.searchInProgress).toBe(false);
@@ -35,8 +24,8 @@ describe('search', function () {
     expect(eventTriggered).toBe(false);
 
     scope.appVars = {
-      searchItems : [1,2,3],
-      searchCount : 4
+      searchItems: [1, 2, 3],
+      searchCount: 4
     };
 
     scope.loadMore();
@@ -44,19 +33,19 @@ describe('search', function () {
 
   });
 
-  it('should set search results', function(){
+  it('should set search results', function () {
     scope.searchResultsReceived({count: 1, data: [1]});
     expect(scope.appVars.searchCount).toBe(1);
     expect(scope.appVars.searchItems).toEqual([1]);
   });
 
-  it('should set append results', function(){
+  it('should set append results', function () {
     scope.searchResultsReceived({count: 10, data: [1]});
-    scope.moreSearchResultsReceived({count: 10, data: [2,3,4]});
-    expect(scope.appVars.searchItems).toEqual([1,2,3,4]);
+    scope.moreSearchResultsReceived({count: 10, data: [2, 3, 4]});
+    expect(scope.appVars.searchItems).toEqual([1, 2, 3, 4]);
   });
 
-  it('should watch accessToken', function(){
+  it('should watch accessToken', function () {
     scope.appVars.searchCount = 10;
     scope.appVars.searchItems = [1];
     scope.appVars.accessToken = "blah";
