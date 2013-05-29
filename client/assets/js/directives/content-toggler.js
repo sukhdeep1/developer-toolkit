@@ -13,6 +13,7 @@ angular.module('developer-toolkit')
         $element.addClass('content-toggler');
         $content = $element.find("#content");
         $content.css('display', 'block');
+        $content.css('visibility', 'hidden');
         $content.addClass('popover fade bottom');
         $button = $element.find("#button");
 
