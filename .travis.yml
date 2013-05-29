@@ -2,7 +2,7 @@ language: node_js
 node_js:
 - 0.10
 notifications:
-  hipchat: HIPCHAT_TOKEN@development
+  hipchat: $HIPCHAT_TOKEN@development
 env:
   matrix:
     - secure: "F1r3GDnGHiKm9fCWpIveNMxMVzRzgCdFwInXHFPk/yKnjIYYSFTn9ApXJDfE\neue0gMXgpW8j/rVgPRXCf0vKe0OFb7CnqZNLbc3+U7V86ouFTOXTgjW4690A\nCLLJTX8Ce7GDpqVgvXSfewjbx4wJOIHkcPXEcUY2eBs0YqO5iIg="
