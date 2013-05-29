@@ -1,5 +1,8 @@
 language: node_js
 node_js:
-  - 0.10
+- 0.10
 notifications:
-  secure: "DTb6Tn6/wb89vBhpS/Ml6EBe437CB00eQYR6S+k3HejtRFQ4hzVOI2xC2+BX\nogUAlaI6iPPRSOy5h4fL0kR2OfUduHGWKu89OhbPpqHBSpMzm6AKPRLx2dO4\nnBSAg6Wl3hemu0/BTfssH3NTqgTIP3dYP9FBpGG42TC9sQl0SAg="
+  hipchat: HIPCHAT_TOKEN@development
+env:
+  matrix:
+    - secure: "F1r3GDnGHiKm9fCWpIveNMxMVzRzgCdFwInXHFPk/yKnjIYYSFTn9ApXJDfE\neue0gMXgpW8j/rVgPRXCf0vKe0OFb7CnqZNLbc3+U7V86ouFTOXTgjW4690A\nCLLJTX8Ce7GDpqVgvXSfewjbx4wJOIHkcPXEcUY2eBs0YqO5iIg="
