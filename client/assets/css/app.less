@@ -8,6 +8,13 @@
   box-shadow: 0px 5px 10px rgba(0, 0, 0, @opacity);
 }
 
+.mixin-transition(@property, @duration) {
+  transition: @property @duration ease-in-out;
+  -moz-transition: @property @duration ease-in-out; /* FF3.7+ */
+  -o-transition: @property @duration ease-in-out; /* Opera 10.5 */
+  -webkit-transition: @property @duration ease-in-out; /* Saf3.2+, Chrome */
+}
+
 body {
   font-family: 'Ubuntu', sans-serif;
   background-color: lighten(@grey, 40%);
@@ -16,9 +23,7 @@ body {
     .navbar-inner {
       border-bottom: solid 1px lighten(@grey, 10%);
     }
-
   }
-
 }
 
 .navbar {
@@ -85,15 +90,55 @@ body {
         color: lighten(@green, 40%);
       }
     }
+
+    .nav {
+      margin-top: 10px;
+      span {
+        float: left;
+      }
+      .link {
+        padding-left: 10px;
+        float: left;
+        [class^="icon-"],
+        [class*=" icon-"]{ line-height: 20px;}
+        [class^="icon-"],
+        [class*=" icon-"],
+        label {
+          padding-left: 5px;
+          float: left;
+          font-weight: lighter;
+          font-size: 13px;
+          text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+        * {
+          .mixin-transition(color, 100ms);
+          color: lighten(@grey, 40%);
+          .mixin-no-user-select;
+        }
+
+        &:hover {
+          * {
+            color: lighten(@grey, 10%)
+          }
+        }
+      }
+    }
+
+    /*[class^="icon-"],
+    [class*=" icon-"] {
+      margin-left: 10px;
+      margin-right: 10px;
+      * {
+        padding-left: 10px;
+        pardding-right: 10px;
+      }
+    }*/
+
     .navbar-search {
       padding-top: 3px;
       .nudge {
         margin-left: 10px;
       }
-      /**{
-        margin-left: 10px;
-      }*/
-
       select {
         width: 140px;
       }
@@ -103,7 +148,6 @@ body {
         font-size: 18px;
         color: white;
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.82);
-
         &:hover {
           opacity: 0.5;
         }
@@ -138,9 +182,44 @@ body {
 
 .launcher {
 
+  .options{
+    visibility: hidden;
+    width: 100%;
+    height: 240px;
+    border-top: solid 1px darken(@grey, 35%);
+    border-bottom: solid 1px darken(@grey, 35%);
+    background-color: darken(@grey, 25%);
+    position: absolute;
+    top: @bar-height;
+
+    .control-label,
+    label{
+      color: lighten(@grey, 40%);
+      font-weight: lighter;
+      font-size: 12px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  .options.show{
+    visibility: visible;
+  }
+
+  .content {
+    position: absolute;
+    top: @bar-height;
+    .mixin-transition(top, 200ms);
+    z-index: 8;
+  }
+
+  .content.option-visible{
+    top: 280px;
+  }
+
   .CodeMirror {
-    height: 520px;
     font-size: 13px;
+    width: 100%;
+    height: 100%;
   }
 
   .buttons {
@@ -176,25 +255,25 @@ body {
   }
 }
 
-
-.hero-unit{
-  h1,h2,h3,h4,h5{
+.hero-unit {
+  h1, h2, h3, h4, h5 {
     font-weight: lighter;
     color: darken(@grey, 10%);
   }
 
   [class^="icon-"],
-  [class*=" icon-"]{
+  [class*=" icon-"] {
     margin-left: 10px;
     margin-right: 10px;
   }
-  p{
+  p {
     color: darken(@grey, 20%);
   }
 }
 
-.welcome-view{
+.welcome-view {
 }
+
 .search-and-results {
 
   td {
@@ -208,11 +287,11 @@ body {
 
     .item {
       margin-top: @bar-height * 2;
-      table{
-        td{
+      table {
+        td {
           font-size: 12px;
         }
-        .title{
+        .title {
           text-overflow: ellipsis;
           height: 30px;
         }
@@ -223,7 +302,7 @@ body {
       top: @bar-height * 2;
       width: 100%;
       background: white;
-      height:@bar-height;
+      height: @bar-height;
       table {
         height: 100%;
         th {
@@ -244,10 +323,10 @@ body {
           vertical-align: top;
           background-color: white;
         }
-        .title{
+        .title {
           max-width: 400px;
           min-width: 200px;
-          width:400px;
+          width: 400px;
         }
         .action {
           width: 100px;

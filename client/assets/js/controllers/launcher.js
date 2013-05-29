@@ -3,10 +3,22 @@ angular.module('developer-toolkit')
     ['$scope',
       '$routeParams',
       '$location',
+      '$timeout',
       'LauncherTemplate',
       'EncryptOptions',
       'CorespringConfig',
-      function ($scope, $routeParams, $location, LauncherTemplate, EncryptOptions, CorespringConfig) {
+      function ($scope, $routeParams, $location, $timeout,LauncherTemplate, EncryptOptions, CorespringConfig) {
+
+
+        $scope.getConfigLinkLabel = function(show){
+          return (show ? "Hide" : "Show" ) + " configuration options";
+        }
+
+        $timeout( function(){
+          $scope.launcherReady = true;
+        }, 300);
+
+        $scope.showConfigOptions = false;
 
         $scope.mode = "preview";
         $scope.modes = [
@@ -21,7 +33,6 @@ angular.module('developer-toolkit')
         $scope.codemirrorOptions = {
           lineWrapping: true,
           lineNumbers: true,
-          height: 500,
           theme: 'elegant',
           readOnly: true,
           mode: 'htmlmixed'

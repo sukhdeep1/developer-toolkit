@@ -4,6 +4,7 @@
 
     $scope.searchInProgress = false;
 
+
     $scope.loadMore = function(){
       if($scope.appVars.searchItems.length < $scope.appVars.searchCount){
         $scope.$broadcast("loadMoreSearchResults");

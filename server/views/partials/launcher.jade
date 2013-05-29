@@ -1,42 +1,50 @@
 include ../mixins/form-items
 
 .launcher
-  form.form-horizontal
+  .sub-menu
+    .nav
+      span(style="padding-left:10px;") Launch Code
+      .link(ng-click="copyToClipboard()")
+        i.icon-copy
+        label Copy to clipboard
+      .link(ng-click="previewInNewWindow()")
+        i.icon-signin
+        label Launch in new window
+      .link(ng-click="showConfigOptions = !showConfigOptions")
+        i(style="font-size: 16px;", ng-class="{false: 'icon-expand-alt', true: 'icon-collapse-alt'}[showConfigOptions==true]")con-signin
+        label {{getConfigLinkLabel(showConfigOptions)}}
+        //(ng-bind="{showConfigOptions ? 'Hide' : 'Show' + ' configuration options'}")
+
+  .content(ng-class="{true: 'option-visible', false: ''}[showConfigOptions]")
     textarea(ui-codemirror="codemirrorOptions",
     style="height: 500px",
     ng-model="editorText")
-    .buttons
-      button.btn-success.btn-small(ng-click="copyToClipboard()") Copy to clipboard
-      button.btn-success.btn-small(ng-click="previewInNewWindow()") Preview in new window
 
+  .options(ng-class="{true: 'show',false: ''}[launcherReady]")
+    form.form-horizontal
+      .control-group
+        label.control-label Mode
+        .controls
+          label.inline.radio(ng-repeat="m in modes")
+            input.controls(type="radio", ng-model="options.mode", name="mode", value="{{m.mode}}")
+            | {{m.mode}}
+          span.js-override.nudge-down Allow js override?
+            input(type="checkbox", ng-model="overrides.mode")
 
-  form.form-horizontal
-    fieldset
-      legend Config options
+      mixin input('itemId', 'Item')
+      mixin input('sessionId', 'Session')
+      mixin input('assessmentId', 'Assessment')
 
-    .control-group
-      label.control-label Mode
-      .controls
-        label.inline.radio(ng-repeat="m in modes")
-          input.controls(type="radio", ng-model="options.mode", name="mode", value="{{m.mode}}")
-          | {{m.mode}}
-        span.js-override.nudge-down Allow js override?
-          input(type="checkbox", ng-model="overrides.mode")
+      .control-group(ng-show="show('expires')")
+        label.control-label Expires
+        input.controls(ui-jq="datepicker", type="text", ng-model="pickerExpires", name="expires")
 
-    mixin input('itemId', 'Item')
-    mixin input('sessionId', 'Session')
-    mixin input('assessmentId', 'Assessment')
-
-    .control-group(ng-show="show('expires')")
-      label.control-label Expires
-      input.controls(ui-jq="datepicker", type="text", ng-model="pickerExpires", name="expires")
-
-    .control-group
-      label.control-label Role
-      .controls
-        label.inline.radio
-          input(type="radio", ng-model="options.role", value="student", name="role")
-          | Student
-        label.inline.radio
-          input(type="radio", ng-model="options.role", value="instructor", name="role")
-          | Instructor
+      .control-group
+        label.control-label Role
+        .controls
+          label.inline.radio
+            input(type="radio", ng-model="options.role", value="student", name="role")
+            | Student
+          label.inline.radio
+            input(type="radio", ng-model="options.role", value="instructor", name="role")
+            | Instructor

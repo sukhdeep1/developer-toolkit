@@ -17,12 +17,10 @@ angular.module('developer-toolkit')
       });
 
       $rootScope.$on('apiCallFailed', function (event, item) {
-        console.warn("api call failed: " + item);
         $rootScope.appVars.apiCallFailed = true;
       });
 
       $rootScope.$on('apiCallSucceeded', function (event, item) {
-        console.warn("api call succeeded: " + item);
         $location.search('accessToken', $rootScope.appVars.accessToken);
         $rootScope.appVars.apiCallFailed = false;
       });
