@@ -20,7 +20,8 @@
     "node": ">= 0.6.0"
   },
   "scripts": {
-    "prepublish": "echo prepublish; ./prepublish"
+    "prepublish": "echo prepublish; ./prepublish",
+    "test": "grunt test --verbose"
   },
   "devDependencies": {
     "grunt-contrib-concat": "~0.3.0",
