@@ -6,7 +6,7 @@
 
 
     $scope.loadMore = function(){
-      if($scope.appVars.searchItems.length < $scope.appVars.searchCount){
+      if($scope.appVars && $scope.appVars.searchItems && $scope.appVars.searchItems.length < $scope.appVars.searchCount){
         $scope.$broadcast("loadMoreSearchResults");
       }
     };
