@@ -2,6 +2,25 @@
 @green: #92d300;
 @bar-height: 40px;
 
+.mixin-no-user-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.mixin-bg-gradient(@from, @to) {
+  background: -moz-linear-gradient(top,  @from 0%, @to 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@from), color-stop(100%,@to));
+  background: -webkit-linear-gradient(top,  @from 0%,@to 100%);
+  background: -o-linear-gradient(top,  @from 0%,@to 100%);
+  background: -ms-linear-gradient(top,  @from 0%,@to 100%);
+  background: linear-gradient(to bottom,  @from 0%,@to 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#00000000', GradientType=0);
+}
+
 .mixin-box-shadow(@opacity: 0.3) {
   -webkit-box-shadow: 0px 5px 10px rgba(0, 0, 0, @opacity);
   -moz-box-shadow: 0px 5px 10px rgba(0, 0, 0, @opacity);
@@ -51,16 +70,6 @@ body {
   }
 }
 
-.mixin-bg-gradient(@from, @to) {
-  background: -moz-linear-gradient(top,  @from 0%, @to 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@from), color-stop(100%,@to));
-  background: -webkit-linear-gradient(top,  @from 0%,@to 100%);
-  background: -o-linear-gradient(top,  @from 0%,@to 100%);
-  background: -ms-linear-gradient(top,  @from 0%,@to 100%);
-  background: linear-gradient(to bottom,  @from 0%,@to 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#00000000', GradientType=0);
-}
-
 .main-content {
   position: relative;
   top: 40px;
@@ -100,7 +109,9 @@ body {
         padding-left: 10px;
         float: left;
         [class^="icon-"],
-        [class*=" icon-"]{ line-height: 20px;}
+        [class*=" icon-"] {
+          line-height: 20px;
+        }
         [class^="icon-"],
         [class*=" icon-"],
         label {
@@ -123,16 +134,6 @@ body {
         }
       }
     }
-
-    /*[class^="icon-"],
-    [class*=" icon-"] {
-      margin-left: 10px;
-      margin-right: 10px;
-      * {
-        padding-left: 10px;
-        pardding-right: 10px;
-      }
-    }*/
 
     .navbar-search {
       padding-top: 3px;
@@ -182,7 +183,7 @@ body {
 
 .launcher {
 
-  .options{
+  .options {
     visibility: hidden;
     width: 100%;
     height: 240px;
@@ -193,7 +194,7 @@ body {
     top: @bar-height;
 
     .control-label,
-    label{
+    label {
       color: lighten(@grey, 40%);
       font-weight: lighter;
       font-size: 12px;
@@ -201,7 +202,7 @@ body {
     }
   }
 
-  .options.show{
+  .options.show {
     visibility: visible;
   }
 
@@ -212,7 +213,7 @@ body {
     z-index: 8;
   }
 
-  .content.option-visible{
+  .content.option-visible {
     top: 280px;
   }
 
@@ -346,15 +347,6 @@ body {
       }
     }
   }
-}
-
-.mixin-no-user-select {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 .error {

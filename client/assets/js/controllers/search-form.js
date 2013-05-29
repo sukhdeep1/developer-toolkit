@@ -1,4 +1,4 @@
-angular.module('developer-toolkit')
+angular.module('developer-toolkit.controllers')
   .controller('SearchForm',
     ['$scope', 'Collections', 'ItemSearch',
       function ($scope, Collections, ItemSearch) {

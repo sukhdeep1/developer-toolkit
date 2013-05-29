@@ -1,4 +1,5 @@
 angular.module('developer-toolkit', [
+    'developer-toolkit.controllers',
     'corespring-ng-services',
     'corespring-ng-utils',
     'cs.directives',

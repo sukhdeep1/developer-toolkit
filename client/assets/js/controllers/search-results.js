@@ -1,4 +1,4 @@
-angular.module('developer-toolkit')
+angular.module('developer-toolkit.controllers')
   .controller('SearchResults',
     ['$scope', 'ItemFormatter',
       function ($scope, ItemFormatter) {

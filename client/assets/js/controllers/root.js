@@ -1,4 +1,4 @@
-angular.module('developer-toolkit')
+angular.module('developer-toolkit.controllers')
   .controller('Root', ['$scope', '$rootScope', '$location',
     function ($scope, $rootScope, $location) {
 

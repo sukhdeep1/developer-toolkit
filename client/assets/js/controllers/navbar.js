@@ -1,4 +1,4 @@
-angular.module('developer-toolkit')
+angular.module('developer-toolkit.controllers')
   .controller('Navbar', ['$scope','$location', function ($scope,$location) {
 
     $scope.isActive = function(path){

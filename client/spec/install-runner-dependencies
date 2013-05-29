@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+echo "install runner dependencies (if needed)"
+
+DIRECTORY=$1
+
+if [ ! -d "$DIRECTORY/components" ]; then
+  echo "need to run bower install for the runner"
+  cd $DIRECTORY
+  echo pwd
+  node ../../../node_modules/bower/bin/bower install
+fi

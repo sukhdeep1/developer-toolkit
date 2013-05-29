@@ -36,7 +36,8 @@
 
   };
 
-  angular.module('developer-toolkit').controller('Search', ['$scope', '$routeParams', controller ]);
+  angular.module('developer-toolkit.controllers')
+    .controller('Search', ['$scope', '$routeParams', controller ]);
 
 }).call(this);
 

@@ -1,4 +1,4 @@
-angular.module('developer-toolkit')
+angular.module('developer-toolkit.controllers')
   .controller('Launcher',
     ['$scope',
       '$routeParams',
@@ -16,7 +16,7 @@ angular.module('developer-toolkit')
 
         $timeout( function(){
           $scope.launcherReady = true;
-        }, 300);
+        }, 1000);
 
         $scope.showConfigOptions = false;
 

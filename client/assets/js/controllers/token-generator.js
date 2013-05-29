@@ -1,4 +1,4 @@
-angular.module('developer-toolkit')
+angular.module('developer-toolkit.controllers')
   .controller('TokenGenerator', [ '$scope', 'AccessToken', function ($scope, AccessToken) {
 
     var labels = {
