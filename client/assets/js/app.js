@@ -13,16 +13,11 @@
 //= require "components/corespring-bootstrap-datepicker/js/bootstrap-datepicker"
 // We have to do this due to issues in linux loading the files in the correct order
 //= require "components/corespring-ng-services/lib/_declaration"
-//= require "components/corespring-ng-services/lib/access-token"
-//= require "components/corespring-ng-services/lib/collections"
-//= require "components/corespring-ng-services/lib/encrypt-options"
-//= require "components/corespring-ng-services/lib/formatting-utils"
-//= require "components/corespring-ng-services/lib/item"
-//= require "components/corespring-ng-services/lib/item-search"
-//= require "components/corespring-ng-services/lib/mongo-query"
+//= require_tree "components/corespring-ng-services/lib"
 //= require "components/corespring-ng-components/build/corespring-ng-components"
 //= require "developer-toolkit"
 //= require_tree "directives"
+//= require "controllers/_declaration"
 //= require_tree "controllers"
 
 
