@@ -5,6 +5,6 @@ node_js:
 notifications:
   hipchat:
     rooms:
-      - secure: "cfiHTNXXVKTbaShxiCCAvNQqcrj8xol9tKFLJN7VaXFrtABO3fovRY7GGqlf\nN+irwNyCQbbW56C7uC5ObKNUiry5t9Z6uz+JBH+624xOw3fAhBREiPe4nBqV\n66NOVd7Dp7tV/Anx2P483+i5YCD78zRTQTwcMvvSSaAmJyqZuFw="
+      secure: "cfiHTNXXVKTbaShxiCCAvNQqcrj8xol9tKFLJN7VaXFrtABO3fovRY7GGqlf\nN+irwNyCQbbW56C7uC5ObKNUiry5t9Z6uz+JBH+624xOw3fAhBREiPe4nBqV\n66NOVd7Dp7tV/Anx2P483+i5YCD78zRTQTwcMvvSSaAmJyqZuFw="
     template:
       - '%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}'
