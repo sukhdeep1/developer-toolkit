@@ -3,6 +3,8 @@ angular.module('developer-toolkit.controllers')
     ['$scope', 'Collections', 'ItemSearch',
       function ($scope, Collections, ItemSearch) {
 
+        $scope.errorPrefix = "An error occurred: ";
+
         $scope.resetForm = function () {
           console.log("resetForm");
           $scope.keyword = null;
@@ -49,8 +51,7 @@ angular.module('developer-toolkit.controllers')
             },
             function (error) {
               if (searchUid == lastSearchId) {
-                console.warn("An error occurred");
-                $scope.errorMessage = "An error occurred: " + error.message;
+                $scope.errorMessage = $scope.errorPrefix + error.message;
                 $scope.searchInProgress = false;
               }
             });
