@@ -1,4 +1,4 @@
-.welcome-view(ng-show="!appVars.accessToken")
+.welcome-view(ng-show="!appVars.accessToken", data-ng-animate="'fade'", style="display: none;")
   .hero-unit
     h1 Developer Toolkit
     p
@@ -59,7 +59,7 @@
             button.btn-success.btn-small(ng-click="getCode(i)")
               i.icon-code(style="font-weight:bold; margin-right: 2px;")
               | Code
-    .no-items-found(ng-show="appVars.searchCount == 0")
+    .no-items-found(ng-show="appVars.searchCount == 0", style="display:none;", data-ng-animate="'fade'")
       .hero-unit
         h3
           | No items found

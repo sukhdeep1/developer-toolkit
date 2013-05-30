@@ -2,7 +2,7 @@
   "name": "developer-toolkit-client",
   "version": "0.0.0",
   "dependencies": {
-    "angular": "latest",
+    "angular-unstable": "~1.1.5",
     "angular-resource": "latest",
     "underscore": "latest",
     "jquery": "latest",
@@ -13,6 +13,6 @@
     "corespring-ng-services": "git://github.com/corespring/corespring-ng-services.git",
     "corespring-ng-components": "git://github.com/corespring/corespring-ng-components.git",
     "components-font-awesome": "~3.1.0",
-    "select2": "3.2"
+    "select2": "3.2",
   }
 }

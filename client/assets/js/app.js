@@ -1,5 +1,5 @@
 //= require "components/jquery/jquery"
-//= require "components/angular/angular"
+//= require "components/angular-unstable/angular"
 //= require "components/angular-resource/angular-resource"
 //= require "components/bootstrap/js/bootstrap"
 //= require "components/underscore/underscore"
