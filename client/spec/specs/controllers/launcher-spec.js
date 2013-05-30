@@ -111,5 +111,32 @@ describe('launcher', function () {
     expect(mockLaunchTemplate.template).toHaveBeenCalledWith("url", "clientId", "ec", "o", "raw");
   });
 
+  it('should rerender', function () {
+    spyOn(mockLaunchTemplate, 'template');
+
+    scope.encryptOptions = function (o, success) {
+      success({clientId: 'clientId', options: JSON.stringify(o), request: o});
+    };
+
+    scope.options = {
+      mode: "preview",
+      itemId: "1"
+    };
+
+    scope.overrides = {
+      itemId: true
+    };
+
+    scope.reRender();
+
+    expect(mockLaunchTemplate.template).toHaveBeenCalled();
+    var encryptionRequest = {mode: 'preview', itemId: '*'};
+    expect(mockLaunchTemplate.template).toHaveBeenCalledWith('url', 'clientId', JSON.stringify(encryptionRequest), '{"mode":"preview","itemId":"1"}', encryptionRequest);
+    scope.overrides.itemId = false;
+    encryptionRequest.itemId = '1';
+    scope.reRender();
+    expect(mockLaunchTemplate.template).toHaveBeenCalled();
+    expect(mockLaunchTemplate.template).toHaveBeenCalledWith('url', 'clientId', JSON.stringify(encryptionRequest), '{"mode":"preview","itemId":"1"}', encryptionRequest);
+  });
 
 });

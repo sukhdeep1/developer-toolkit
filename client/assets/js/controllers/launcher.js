@@ -112,9 +112,9 @@ angular.module('developer-toolkit.controllers')
           var optionsToEncrypt, clientOptions = {};
           //Note - mode is mandatory on the client side
           clientOptions.mode = $scope.options.mode;
-          addId(clientOptions, 'itemId');//$scope.options.itemId;
-          addId(clientOptions, 'sessionId');//$scope.options.itemId;
-          addId(clientOptions, 'assessmentId');//$scope.options.itemId;
+          addId(clientOptions, 'itemId');
+          addId(clientOptions, 'sessionId');
+          addId(clientOptions, 'assessmentId');
 
           optionsToEncrypt = _.extend(_.clone($scope.options), serverOptions);
 
