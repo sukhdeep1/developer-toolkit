@@ -4,10 +4,13 @@ node_js:
 # whitelist
 branches:
   only:
-    - travis-key
+    - master
 notifications:
   hipchat:
     rooms:
       - secure: "nqqUwj1G2ujTiGFfJOCd4WDpol5NGWuUs74rrT1/FGkNLNNhciftmKL4uKB3\ndRB3AZ4dVQlgHw3koOGAVu9qd7H8b6GAg/lIiP03zntibkf6PCClL1j3i2HE\nbDO2Rl0VsVclp2ttTqsbXQGdhVPMbWmXsxvStvGBn0t6AsFG0B0="
     on_success: always
     on_failure: always
+    template:
+          - '%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}'
+
