@@ -8,8 +8,8 @@ exports.jsString = function(htmlString){
   return htmlString
           .replace(/"/g, "\\\"")
           .replace(/\n/g, "\\n")
-          .replace(/\//g, "\\/")
-}
+          .replace(/\//g, "\\/");
+};
 
 exports.init = function(app){
   app.get('/', function(req, res) {
@@ -18,7 +18,7 @@ exports.init = function(app){
       title: "Index",
       corespringUrl : config.get("CORESPRING_URL"),
       launchTemplate: launchTemplate.template()
-    }
+    };
     res.render('index', params );
   });
 
@@ -35,7 +35,7 @@ exports.init = function(app){
       "ignore");
 
     res.setHeader('Content-Type', 'text/html');
-    res.send(template)
+    res.send(template);
   });
 };
 

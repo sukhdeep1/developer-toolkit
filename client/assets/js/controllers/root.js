@@ -2,8 +2,10 @@ angular.module('developer-toolkit.controllers')
   .controller('Root', ['$scope', '$rootScope', '$location',
     function ($scope, $rootScope, $location) {
 
+      'use strict';
+
       /** @note Using object model so that bindings will fire across nested scopes */
-      $rootScope.appVars = { accessToken: null }
+      $rootScope.appVars = { accessToken: null };
 
       $rootScope.$on('setAccessToken', function (event, obj) {
         $rootScope.appVars.accessToken = obj.accessToken;

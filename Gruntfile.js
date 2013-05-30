@@ -24,14 +24,23 @@ module.exports = function (grunt) {
           template: client + '/spec/runner/angular-runner.tmpl'
         }
       }
+    },
+
+    jshint: {
+      all: [
+      'Gruntfile.js',
+      'client/assets/js/controllers/**/*.js',
+      'client/assets/js/directives/**/*.js',
+      'server/**/*.js']
     }
-  }
+  };
 
   grunt.initConfig(config);
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-shell');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.registerTask('default', []);
-  grunt.registerTask('test', [ 'shell:prepareTests', 'jasmine']);
+  grunt.registerTask('test', [ 'jshint', 'shell:prepareTests', 'jasmine']);
 
-}
+};

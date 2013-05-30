@@ -3,6 +3,8 @@ angular.module('developer-toolkit.controllers')
     ['$scope', 'ItemFormatter',
       function ($scope, ItemFormatter) {
 
+        'use strict';
+
         //Mixin Item Formatter
         angular.extend($scope, ItemFormatter);
 
@@ -11,7 +13,7 @@ angular.module('developer-toolkit.controllers')
             return "";
           }
           return grades.join(", ");
-        }
+        };
 
         $scope.renderStandards = function (standards) {
           if (!standards) {
@@ -20,24 +22,24 @@ angular.module('developer-toolkit.controllers')
           return (_.map(standards, function (s) {
             return s.dotNotation;
           })).join(", ");
-        }
+        };
 
-        $scope.renderPrimarySubject = function(subject){
-          if(!subject){
+        $scope.renderPrimarySubject = function (subject) {
+          if (!subject) {
             return "";
           }
 
-          var filtered = _.filter([subject.category, subject.subject], function(s){
-            return s != null && s.length > 0;
+          var filtered = _.filter([subject.category, subject.subject], function (s) {
+            return s && s.length > 0;
           });
 
           return filtered.join(": ");
-        }
+        };
 
-        $scope.getCode = function(item){
+        $scope.getCode = function (item) {
           console.log("getCode: " + item);
           $scope.$emit('launchItem', item);
-        }
+        };
 
 
       }]);

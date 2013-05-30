@@ -7,14 +7,15 @@ angular.module('developer-toolkit.controllers')
       'LauncherTemplate',
       'EncryptOptions',
       'CorespringConfig',
-      function ($scope, $routeParams, $location, $timeout,LauncherTemplate, EncryptOptions, CorespringConfig) {
+      function ($scope, $routeParams, $location, $timeout, LauncherTemplate, EncryptOptions, CorespringConfig) {
 
+        'use strict';
 
-        $scope.getConfigLinkLabel = function(show){
-          return (show ? "Hide" : "Show" ) + " configuration options";
-        }
+        $scope.getConfigLinkLabel = function (show) {
+          return (show ? "Hide" : "Show") + " configuration options";
+        };
 
-        $timeout( function(){
+        $timeout(function () {
           $scope.launcherReady = true;
         }, 1000);
 
@@ -58,16 +59,16 @@ angular.module('developer-toolkit.controllers')
           itemId: $routeParams.itemId,
           mode: "preview",
           expires: 0
-        }
+        };
 
         $scope.overrides = {
           itemId: false,
           sessionId: false,
           mode: false
-        }
+        };
 
-        $scope.$watch('appVars.accessToken', function (a,b) {
-          if (a != b) {
+        $scope.$watch('appVars.accessToken', function (a, b) {
+          if (a !== b) {
             $scope.reRender();
           }
         });
@@ -76,29 +77,31 @@ angular.module('developer-toolkit.controllers')
           $scope.reRender();
         }, true);
 
-        $scope.$watch('overrides', function (a,b) {
-          var equal = true;
-          for (var k in a) {
-            if (a[k] != b[k]) equal = false;
+        $scope.$watch('overrides', function (a, b) {
+          var k, equal = true;
+          for (k in a) {
+            if (a[k] !== b[k]) {
+              equal = false;
+            }
           }
           if (!equal) {
             $scope.reRender();
           }
         }, true);
 
-        $scope.reRender = function(){
+        $scope.reRender = function () {
 
-          var addWildcard = function(obj, key, value){
-            if( $scope.overrides[key] ) {
+          var addWildcard = function (obj, key, value) {
+            if ($scope.overrides[key]) {
               obj[key] = value;
             }
           };
 
-          var addId = function(obj, key){
-            if($scope.show(key)){
+          var addId = function (obj, key) {
+            if ($scope.show(key)) {
               obj[key] = $scope.options[key];
             }
-          }
+          };
 
           var serverOptions = {};
           addWildcard(serverOptions, "itemId", "*");
@@ -106,14 +109,14 @@ angular.module('developer-toolkit.controllers')
           addWildcard(serverOptions, "mode", "*");
 
 
-          var clientOptions = {};
+          var optionsToEncrypt, clientOptions = {};
           //Note - mode is mandatory on the client side
           clientOptions.mode = $scope.options.mode;
           addId(clientOptions, 'itemId');//$scope.options.itemId;
           addId(clientOptions, 'sessionId');//$scope.options.itemId;
           addId(clientOptions, 'assessmentId');//$scope.options.itemId;
 
-          var optionsToEncrypt = _.extend(_.clone($scope.options), serverOptions);
+          optionsToEncrypt = _.extend(_.clone($scope.options), serverOptions);
 
           $scope.clientSideOptions = clientOptions;
 
@@ -125,12 +128,12 @@ angular.module('developer-toolkit.controllers')
           $scope.encryptOptions(optionsToEncrypt, onSuccess);
         };
 
-        $scope.prettify = function(s){
-          try{
+        $scope.prettify = function (s) {
+          try {
             var obj = JSON.parse(s);
             return JSON.stringify(obj, undefined, 2);
           } catch (e) {
-           return s;
+            return s;
           }
         };
 
@@ -140,52 +143,52 @@ angular.module('developer-toolkit.controllers')
           $scope.editorText = LauncherTemplate.template(url, clientId, encryptedOptions, overrides, prettyJson);
         };
 
+        $scope.errorMessage = "Your access token has expired. Please generate a new one at the top of the page.";
+
         $scope.encryptOptions = function (opts, onSuccess) {
           var onError = function (data) {
             console.warn("error: ");
-            $scope.editorText = "Your access token has expired. Please generate a new one at the top of the page.";
+            $scope.editorText = $scope.errorMessage;
             $scope.$emit('apiCallFailed', 'encrypt-options');
-          }
+          };
 
-          var s = function(data){
+          var s = function (data) {
             onSuccess(data);
             $scope.$emit('apiCallSucceeded', 'encrypt-options');
-          }
+          };
 
           EncryptOptions.encrypt($scope.appVars.accessToken, opts, s, onError);
         };
 
         $scope.copyToClipboard = function () {
           window.prompt("Copy to clipboard: Ctrl+C (Cmd+C for mac), Enter", $scope.editorText);
-        }
+        };
 
 
         $scope.show = function (controlName) {
           var m = _.find($scope.modes, function (m) {
-            return m.mode == $scope.options.mode
+            return m.mode === $scope.options.mode;
           });
-          return _.contains(m.show, controlName)
-        }
+          return _.contains(m.show, controlName);
+        };
 
-        $scope.$watch('pickerExpires', function(newValue){
-          if(newValue){
-            var arr = newValue.split("/")
-            if(arr.length == 3){
-              var date = parseInt(arr[1]);
-              var month = parseInt(arr[0]) - 1;
-              var year = parseInt(arr[2]);
+        $scope.$watch('pickerExpires', function (newValue) {
+          if (newValue) {
+            var arr = newValue.split("/");
+            if (arr.length === 3) {
+              var date = parseInt(arr[1], 10);
+              var month = parseInt(arr[0], 10) - 1;
+              var year = parseInt(arr[2], 10);
               var d = new Date(year, month, date);
               $scope.options.expires = d.getTime();
             }
           }
         });
 
-        $scope.previewInNewWindow = function(){
+        $scope.previewInNewWindow = function () {
           var out = ["clientId=" + $scope.encryptionResult.clientId,
             "encrypted=" + $scope.encryptionResult.options,
-            "overrides=" + JSON.stringify($scope.clientSideOptions)
-            ];
-
+            "overrides=" + JSON.stringify($scope.clientSideOptions)];
           window.open('/run-launcher?' + out.join("&"), '_blank');
         };
 

@@ -3,6 +3,8 @@ angular.module('developer-toolkit.controllers')
     ['$scope', 'Collections', 'ItemSearch',
       function ($scope, Collections, ItemSearch) {
 
+        'use strict';
+
         $scope.errorPrefix = "An error occurred: ";
 
         $scope.resetForm = function () {
@@ -44,17 +46,18 @@ angular.module('developer-toolkit.controllers')
             skip,
             50,
             function (result) {
-              if (searchUid == lastSearchId) {
+              if (searchUid === lastSearchId) {
                 resultHandler(result);
                 $scope.searchInProgress = false;
               }
             },
             function (error) {
-              if (searchUid == lastSearchId) {
+              if (searchUid === lastSearchId) {
                 $scope.errorMessage = $scope.errorPrefix + error.message;
                 $scope.searchInProgress = false;
               }
-            });
+            }
+          );
         };
 
         $scope.$on("loadMoreSearchResults", function () {
@@ -76,7 +79,7 @@ angular.module('developer-toolkit.controllers')
           $scope.clearCurrentSearch();
           lastSearchId = new Date().getTime();
           itemSearch(lastSearchId, 0, $scope.searchResultsReceived);
-        }
+        };
       }
 
-    ]);
+      ]);

@@ -2,8 +2,14 @@ window.helpers = (window.helpers || {});
 helpers.controller = (helpers.controller || {});
 
 
-helpers.controller.initController = function (name, mockProviders, postScopeFn) {
+helpers.controller.initController = function (name, mockProviders, postScopeFn, injectScopeFn) {
+  'use strict';
 
+  if (!injectScopeFn) {
+    injectScopeFn = function (s) {
+      return {$scope: s};
+    };
+  }
 
   var scope, ctrl, $httpBackend;
 
@@ -18,11 +24,12 @@ helpers.controller.initController = function (name, mockProviders, postScopeFn) 
   inject(function (_$httpBackend_, $rootScope, $controller) {
     $httpBackend = _$httpBackend_;
     scope = $rootScope.$new();
-    if(postScopeFn){
+
+    if (postScopeFn) {
       postScopeFn(scope);
     }
     try {
-      ctrl = $controller(name, {$scope: scope});
+      ctrl = $controller(name, injectScopeFn(scope));
     } catch (e) {
       throw("Error with the controller: " + e);
     }
