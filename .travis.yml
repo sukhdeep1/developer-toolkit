@@ -2,6 +2,10 @@ language: node_js
 node_js:
 - 0.10.2
 - 0.9
+# whitelist
+branches:
+  only:
+    - travis-key
 notifications:
   hipchat:
     rooms:
