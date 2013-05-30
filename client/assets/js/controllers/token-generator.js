@@ -3,9 +3,16 @@ angular.module('developer-toolkit.controllers')
 
     'use strict';
 
-    var labels = {
-      generate: "Generate",
-      loading: "Loading..."
+    $scope.labels = {
+      formTitle: {
+        unknown: "Enter a token or create one",
+        notOk: "Something is wrong with this token",
+        ok: "Everything is ok"
+      },
+      button: {
+        generate: "Generate",
+        loading: "Loading..."
+      }
     };
 
     var tokenString = function (appVars, unknown, notOk, ok) {
@@ -28,9 +35,9 @@ angular.module('developer-toolkit.controllers')
 
     $scope.getTokenFormTitle = function (appVars) {
       return tokenString(appVars,
-        "Enter a token or create one",
-        "Something is wrong with this token",
-        "Everything is ok");
+        $scope.labels.formTitle.unknown,
+        $scope.labels.formTitle.notOk,
+        $scope.labels.formTitle.ok);
     };
 
 
@@ -38,33 +45,32 @@ angular.module('developer-toolkit.controllers')
 
     $scope.$watch('appVars.apiCallFailed', function (newValue) {
       if (newValue) {
-        $scope.tokenFormTitle = "There is something wrong!";
+        $scope.tokenFormTitle = $scope.labels.formTitle.notOk;
       }
     }, true);
 
-    $scope.tokenFormTitle = "Enter an access token or create one";
+    $scope.tokenFormTitle = $scope.labels.formTitle.unknown;
 
-    $scope.generateButtonLabel = labels.generate;
+    $scope.generateButtonLabel = $scope.labels.button.generate;
 
     $scope.generateToken = function () {
       var onSuccess = function (data) {
         $scope.$emit('setAccessToken',
           { accessToken: data.access_token });
-        $scope.generateButtonLabel = labels.generate;
+        $scope.generateButtonLabel = $scope.labels.button.generate;
       };
 
       var onError = function (error) {
-        console.warn("An error occured: " + error);
         if (error.client_id) {
           $scope.errorMessage = "Client Id: " + error.client_id[0].toString();
         } else if (error.client_secret) {
           $scope.errorMessage = "Client Secret: " + error.client_secret[0].toString();
         } else {
           $scope.errorMessage = "Error: " + error.message;
-          $scope.generateButtonLabel = labels.generate;
+          $scope.generateButtonLabel = $scope.labels.button.generate;
         }
       };
-      $scope.generateButtonLabel = labels.loading;
+      $scope.generateButtonLabel = $scope.labels.button.loading;
       $scope.errorMessage = null;
       AccessToken.generate($scope.appVars.clientId, $scope.appVars.clientSecret, onSuccess, onError);
     };
