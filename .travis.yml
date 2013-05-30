@@ -2,6 +2,8 @@ language: node_js
 node_js:
 - 0.10.2
 # whitelist
+# info on setting up private keys:
+# http://stackoverflow.com/questions/13886645/preserve-api-key-integrity-with-travis-ci-build-notification-hooks-in-a-public-r
 branches:
   only:
     - master
