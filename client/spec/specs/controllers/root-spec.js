@@ -1,10 +1,10 @@
-"use strict";
-
 describe('root', function () {
+  "use strict";
+
   var scope = null;
 
   beforeEach(function () {
-    scope = helpers.controller.initController('Root');
+    scope = helpers.controller.initController('Root', {'CorespringConfig': {}});
   });
 
   it('should work', function () {
