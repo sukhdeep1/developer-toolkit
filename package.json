@@ -2,6 +2,11 @@
   "author": "CoreSpring",
   "name": "developer-toolkit",
   "version": "0.0.1",
+  "homepage" : "http://github.com/corespring/developer-toolkit",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/corespring/developer-toolkit.git"
+  },
   "dependencies": {
     "express": "*",
     "jade": "*",

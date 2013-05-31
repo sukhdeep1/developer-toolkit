@@ -1,43 +1,41 @@
-(function () {
+angular.module('developer-toolkit.controllers')
+  .controller('Search', ['$scope', '$routeParams', function ($scope, $routeParams) {
 
-  var controller = function ($scope, $routeParams) {
+    'use strict';
 
     $scope.searchInProgress = false;
 
 
-    $scope.loadMore = function(){
-      if($scope.appVars && $scope.appVars.searchItems && $scope.appVars.searchItems.length < $scope.appVars.searchCount){
+    $scope.loadMore = function () {
+      if ($scope.appVars && $scope.appVars.searchItems && $scope.appVars.searchItems.length < $scope.appVars.searchCount) {
         $scope.$broadcast("loadMoreSearchResults");
       }
     };
 
-    if($routeParams.accessToken){
+    if ($routeParams.accessToken) {
       $scope.$emit('setAccessToken', $routeParams);
     }
 
-    $scope.searchResultsReceived = function(result){
+    $scope.searchResultsReceived = function (result) {
       $scope.appVars.searchCount = result.count;
       $scope.appVars.searchItems = result.data;
     };
 
-    $scope.moreSearchResultsReceived = function(result){
+    $scope.moreSearchResultsReceived = function (result) {
       $scope.appVars.searchCount = result.count;
       $scope.appVars.searchItems = $scope.appVars.searchItems.concat(result.data);
     };
 
-    $scope.$watch('appVars.accessToken', function(){
+    $scope.$watch('appVars.accessToken', function () {
       $scope.clearCurrentSearch();
     });
 
-    $scope.clearCurrentSearch = function(){
+    $scope.clearCurrentSearch = function () {
       $scope.appVars.searchCount = NaN;
       $scope.appVars.searchItems = [];
     };
 
-  };
 
-  angular.module('developer-toolkit.controllers')
-    .controller('Search', ['$scope', '$routeParams', controller ]);
+  }]);
 
-}).call(this);
 

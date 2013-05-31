@@ -2,7 +2,8 @@ var fs = require('fs'),
   http = require('http'),
   express = require('express'),
   config = require('./server/config'),
-  routes = require('./server/routes');
+  routes = require('./server/routes'),
+  packageJson = require('./package.json');
 
 
 config.load('server/config/defaults.json');
@@ -18,11 +19,10 @@ app.use('/images', express.static(__dirname + '/client/assets/img'));
 app.use('/components', express.static(__dirname + '/client/assets/js/components'));
 app.use(express.bodyParser());
 
-routes.init(app);
+routes.init(app, packageJson);
 
-// start server
 var port = process.env.PORT || 5000;
-app.set('port', port);//process.env.PORT || 3000);
-http.createServer(app).listen(app.get('port'), function() {
+app.set('port', port);
+http.createServer(app).listen(app.get('port'), function () {
   console.log("Express server listening on port " + port);
 });

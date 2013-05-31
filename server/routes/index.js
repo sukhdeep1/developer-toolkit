@@ -4,29 +4,33 @@ var config = require('../config'),
   launchTemplate = require('./templates/launch');
 
 /** Single line js friendly string */
-exports.jsString = function(htmlString){
+exports.jsString = function (htmlString) {
   return htmlString
-          .replace(/"/g, "\\\"")
-          .replace(/\n/g, "\\n")
-          .replace(/\//g, "\\/");
+    .replace(/"/g, "\\\"")
+    .replace(/\n/g, "\\n")
+    .replace(/\//g, "\\/");
 };
 
-exports.init = function(app){
-  app.get('/', function(req, res) {
+exports.init = function (app, packageJson) {
+  'use strict';
+
+  app.get('/', function (req, res) {
     var params = {
-      jsString : exports.jsString,
-      title: "Index",
-      corespringUrl : config.get("CORESPRING_URL"),
+      jsString: exports.jsString,
+      title: "Developer Toolkit",
+      appVersion: packageJson.version,
+      projectHomepage: packageJson.homepage,
+      corespringUrl: config.get("CORESPRING_URL"),
       launchTemplate: launchTemplate.template()
     };
-    res.render('index', params );
+    res.render('index', params);
   });
 
-  app.get('/partials/:name', function(req,res){
+  app.get('/partials/:name', function (req, res) {
     res.render('partials/' + req.params.name);
   });
 
-  app.get('/run-launcher', function(req, res){
+  app.get('/run-launcher', function (req, res) {
     var template = launchTemplate.template(
       config.get("CORESPRING_URL"),
       req.query.clientId,

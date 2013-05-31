@@ -5,9 +5,21 @@
       | This toolkit allows you to generate and understand the code needed
       | for launching the CoreSpring Test Player.
     p
-      | To get started add an access token above
+      | If you're starting from the start you'll need to
+      | &nbsp;
+      a(ng-href="{{corespringUrl}}/developer/home") register
+      | &nbsp;with CoreSpring first, then return to this page once you have your client id and secret.
+
+    p
+      | Then you can add an access token above
       i.icon-hand-up
-      | or if you don't have one you can generate one.
+      | or if you don't have one you can generate one using the client id and secret you received during registration.
+
+    p
+      | This project is&nbsp;
+      a(ng-href="{{projectHomepage}}") open source
+      | &nbsp;- contributions, thoughts and ideas are welcome!
+
 .search-and-results(ng-show="appVars.accessToken && !appVars.apiCallFailed")
   .sub-menu(ng-controller="SearchForm")
     form.navbar-search.pull-left

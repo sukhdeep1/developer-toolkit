@@ -1,8 +1,11 @@
 angular.module('developer-toolkit.controllers')
-  .controller('Root', ['$scope', '$rootScope', '$location',
-    function ($scope, $rootScope, $location) {
+  .controller('Root', ['$scope', '$rootScope', '$location', 'CorespringConfig',
+    function ($scope, $rootScope, $location, CorespringConfig) {
 
       'use strict';
+
+      $scope.corespringUrl = CorespringConfig.url;
+      $scope.projectHomepage = CorespringConfig.projectHomepage;
 
       /** @note Using object model so that bindings will fire across nested scopes */
       $rootScope.appVars = { accessToken: null };

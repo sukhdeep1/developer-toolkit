@@ -4,13 +4,14 @@
       ul.nav
         span.corespring-logo
         a.brand Player - Developer Toolkit
+        span.version= appVersion
       ul.nav
         li
           include tokenGenerator
 
       ul.pull-right.nav
         li
-          a(href="http://github.com/corespring/developer-toolkit")
+          a(ng-href="{{projectHomepage}}")
             i.icon-github(style="font-size: 20px; color: #333333") &nbsp;
 
         li(ng-class="{active: isActive('/search')}")

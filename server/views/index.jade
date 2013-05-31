@@ -20,10 +20,12 @@ block scripts
   //Note: corespring-ng-services requires that you create a service called 'CorespringConfig'
   //That contains one property: url
   script(type="text/javascript")
+
     angular.module('developer-toolkit')
       .factory('CorespringConfig', [function (){
          return {
-           url: "#{corespringUrl}"
+           url: "#{corespringUrl}",
+           projectHomepage: "#{projectHomepage}"
          }
     }]);
     angular.module('developer-toolkit')
