@@ -12,8 +12,6 @@ exports.jsString = function (htmlString) {
 };
 
 exports.init = function (app, packageJson) {
-  'use strict';
-
   app.get('/', function (req, res) {
     var params = {
       jsString: exports.jsString,
@@ -36,7 +34,8 @@ exports.init = function (app, packageJson) {
       req.query.clientId,
       req.query.encrypted,
       req.query.overrides,
-      "ignore");
+      "ignore"
+    );
 
     res.setHeader('Content-Type', 'text/html');
     res.send(template);
