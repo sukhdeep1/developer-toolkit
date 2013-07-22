@@ -7,15 +7,16 @@
     <!--
     Note: angular mock needs to be added after jasmine and before the specs.
     -->
-    <% var angularMock = "client/spec/runner/components/angular-mocks/angular-mocks.js" %>
+    <% var bowerDir = "bower_components" %>
+    <% var angularMock = "client/spec/runner/"+bowerDir+"/angular-mocks/angular-mocks.js" %>
 
     <% css.forEach(function(style){ %>
     <link rel="stylesheet" type="text/css" href="<%= style %>">
     <% }) %>
-    <script src="client/spec/runner/components/angular/angular.js" type="text/javascript"></script>
-    <script src="client/spec/runner/components/angular-resource/angular-resource.js" type="text/javascript"></script>
-    <script src="client/spec/runner/components/jquery/jquery.js" type="text/javascript"></script>
-    <script src="client/spec/runner/components/underscore/underscore.js" type="text/javascript"></script>
+    <script src="client/spec/runner/bower_components/angular/angular.js" type="text/javascript"></script>
+    <script src="client/spec/runner/bower_components/angular-resource/angular-resource.js" type="text/javascript"></script>
+    <script src="client/spec/runner/bower_components/jquery/jquery.js" type="text/javascript"></script>
+    <script src="client/spec/runner/bower_components/underscore/underscore.js" type="text/javascript"></script>
     <% with (scripts) { %>
     <% [].concat(jasmine, angularMock, vendor, helpers, src, specs, reporters, start).forEach(function(script){ %>
     <script src="<%= script %>"></script>

@@ -9,7 +9,10 @@ module.exports = function (grunt) {
 
     shell: {
       prepareTests: {
-        command: './'+client+'/spec/install-runner-dependencies ' + client + '/spec/runner'
+        command: './'+client+'/spec/install-runner-dependencies ' + client + '/spec/runner',
+        options: {
+          stdout: true
+        }
       }
     },
 
