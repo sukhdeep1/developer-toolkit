@@ -10,13 +10,13 @@
   "dependencies": {
     "express": "*",
     "jade": "*",
-    "connect-assets": "2.4.3",
+    "connect-assets": "2.5.0",
     "less": "*",
     "coffee-script": "*",
     "underscore": "*",
     "nconf": "*",
     "corespring": "https://github.com/corespring/corespring-js/tarball/master",
-    "bower": "*",
+    "bower": "0.10.0",
     "grunt": "*",
     "grunt-cli": "*",
     "grunt-contrib-clean": "~0.4.1"
