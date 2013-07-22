@@ -10,7 +10,7 @@
   "dependencies": {
     "express": "*",
     "jade": "*",
-    "connect-assets": "*",
+    "connect-assets": "2.4.3",
     "less": "*",
     "coffee-script": "*",
     "underscore": "*",
