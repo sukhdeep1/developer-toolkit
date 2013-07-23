@@ -11,7 +11,7 @@ include ../mixins/form-items
         i.icon-signin
         label Launch in new window
       .link(ng-click="showConfigOptions = !showConfigOptions")
-        i(style="font-size: 16px;", ng-class="{false: 'icon-expand-alt', true: 'icon-collapse-alt'}[showConfigOptions==true]")con-signin
+        i(style="font-size: 16px;", ng-class="{false: 'icon-expand-alt', true: 'icon-collapse-alt'}[showConfigOptions==true]")
         label {{getConfigLinkLabel(showConfigOptions)}}
         //(ng-bind="{showConfigOptions ? 'Hide' : 'Show' + ' configuration options'}")
 
