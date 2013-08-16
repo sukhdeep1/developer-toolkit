@@ -7,7 +7,8 @@ angular.module('developer-toolkit.controllers')
       'LauncherTemplate',
       'EncryptOptions',
       'CorespringConfig',
-      function ($scope, $routeParams, $location, $timeout, LauncherTemplate, EncryptOptions, CorespringConfig) {
+      'ItemSession',
+      function ($scope, $routeParams, $location, $timeout, LauncherTemplate, EncryptOptions, CorespringConfig, ItemSession) {
 
         'use strict';
 
@@ -23,7 +24,7 @@ angular.module('developer-toolkit.controllers')
 
         $scope.mode = "preview";
         $scope.modes = [
-          {mode: "preview", show: ["itemId", "sessionId", "expires"]},
+          {mode: "preview", show: ["itemId", "expires"]},
           {mode: "render", show: ["sessionId", "expires"]},
           {mode: "administer", show: ["sessionId", "itemId", "expires"]},
           {mode: "aggregate", show: ["assessmentId", "itemId", "expires"] }
@@ -190,6 +191,14 @@ angular.module('developer-toolkit.controllers')
             "encrypted=" + $scope.encryptionResult.options,
             "overrides=" + JSON.stringify($scope.clientSideOptions)];
           window.open('/run-launcher?' + out.join("&"), '_blank');
+        };
+
+
+        $scope.createItemSession = function(){
+          console.log($scope.options.itemId);
+          ItemSession.create({itemId:  $scope.options.itemId, accessToken: $scope.appVars.accessToken }, function onCreated(session){
+            $scope.options.sessionId = session.id;
+          });
         };
 
       }]);

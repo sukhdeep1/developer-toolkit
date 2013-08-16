@@ -32,7 +32,17 @@ include ../mixins/form-items
             input(type="checkbox", ng-model="overrides.mode")
 
       mixin input('itemId', 'Item')
-      mixin input('sessionId', 'Session')
+      //mixin input('sessionId', 'Session')
+
+      .control-group(ng-show="show('sessionId')")
+        label.control-label Session
+        input.controls( type="text", ng-model="options.sessionId", name="sessionId")
+        span.js-override Allow js override?
+          input(type="checkbox", ng-model="overrides.sessionId", name="overrides.sessionId")
+        span.create-session(ng-click="createItemSession()", style="cursor: pointer")
+          i.icon-plus-sign
+            | &nbsp;Create
+
       mixin input('assessmentId', 'Assessment')
 
       .control-group(ng-show="show('expires')")

@@ -1,0 +1,48 @@
+<html>
+  <body>
+    <h1> Mutliple Events Bug </h1>
+    <h5> This illustrates the issue of multiple listeners being triggered if you re-instantiate the player</h5>
+
+    <button id="newPlayerButton">Create New Player</button>
+    <div id="my-div"></div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!-- your unencrypted options:
+      ignore
+    -->
+
+    <script type="text/javascript" src="http://localhost:9000/player.js?apiClientId=502d46ce0364068384f217a6&options=a6ae6271501bd5d3a8739ecbb33adcf9065d7360b112c8572711545761293c0924ad225c689254111fdae003e0f9751badf60075dfb769e8e73454a261726910c61dbbd48553a640bb8472ce6c81c71d--936715914ea2072121b361fe0be74309"></script>
+
+
+    <script type="text/javascript">
+
+      $(document).ready(function () {
+
+        var createNewPlayer = function(){
+          console.log("create new player..");
+
+          var options = {"mode":"administer","itemId":"4ffd7ffae4b0031d54b5ab29:0"};
+          options.width =  "600px";
+          options.autoHeight = true;
+          options.onItemSessionCreated = function (sessionId) {
+            console.log("item session created.. " + sessionId);
+          };
+          options.onItemSessionRetrieved = function (sessionId) {
+            console.log("item session retrieved.. " + sessionId);
+          };
+          options.onItemSessionCompleted = function (sessionId) {
+            console.log("item session completed.. " + sessionId);
+          }
+
+          var onError = function (err) {
+            throw "Error loading test player: " + err.msg;
+          };
+
+          new com.corespring.players.ItemPlayer('#my-div', options, onError);
+        }
+
+        $("#newPlayerButton").click(createNewPlayer);
+
+    });
+    </script>
+  </body>
+</html>

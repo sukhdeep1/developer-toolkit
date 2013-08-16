@@ -12,14 +12,24 @@ See: [this mockup](https://www.easel.io/documents/f815298729882407?mode=preview#
 ## Building
 
 We assume you have node/npm & bower installed
-    
+
     npm install
     ./prepublish
     node app.js
-    
+
 ## Pointing the app to corespring.org
 
 You'll need to specify the corespring url as an env var.
 
     export CORESPRING_URL="https://corespring.org"
-    
+
+
+# Change log
+
+### 0.0.2
+* Added button to create an item session when in the configurations option pane
+* Added static view for bugs /bugs/:htmlFile
+
+### 0.0.1
+* Initial Release
+

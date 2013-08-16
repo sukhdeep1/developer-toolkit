@@ -19,5 +19,6 @@
 //= require_tree "directives"
 //= require "controllers/_declaration"
 //= require_tree "controllers"
+//= require_tree "services"
 
 
