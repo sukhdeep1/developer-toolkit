@@ -41,6 +41,7 @@ describe('launcher', function () {
       {
         'LauncherTemplate': mockLaunchTemplate,
         'EncryptOptions': mockEncryptOptions,
+        'ItemSession' : {},
         'CorespringConfig': { url: 'url'},
         '$routeParams': {itemId: '1'}
       }, postScope, injectScope);
