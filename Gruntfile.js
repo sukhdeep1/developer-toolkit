@@ -5,7 +5,7 @@ module.exports = function (grunt) {
 
   var config = {
     pkg: grunt.file.readJSON('package.json'),
-    clean: [ client + "/assets/js/bower_components", "node_modules"],
+    clean: [ client + "/assets/js/bower_components"],
 
     shell: {
       prepareTests: {

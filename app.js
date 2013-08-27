@@ -20,6 +20,8 @@ app.use('/bugs', express.static(__dirname + '/client/bugs'));
 
 //Bootstrap gets a special mapping
 app.use('/components', express.static(__dirname + '/client/assets/js/bower_components'));
+app.use('/bootstrap', express.static(__dirname + '/client/assets/js/bootstrap-2.3.2/css'));
+//app.use('/bootstrap', express.static(__dirname + '/client/assets/js/bower_components/bootstrap/dist/css'));
 app.use(express.bodyParser());
 
 routes.init(app, packageJson);

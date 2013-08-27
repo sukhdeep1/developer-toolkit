@@ -16,7 +16,7 @@
     "underscore": "*",
     "nconf": "*",
     "corespring": "https://github.com/corespring/corespring-js/tarball/master",
-    "bower": "0.10.0",
+    "bower": "1.2.4",
     "grunt": "*",
     "grunt-cli": "*",
     "grunt-contrib-clean": "~0.4.1"
