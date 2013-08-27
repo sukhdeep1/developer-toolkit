@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 node ./node_modules/grunt-cli/bin/grunt clean
-cd client/assets/js
-node ../../../node_modules/bower/bin/bower install
-cd -
-node ./node_modules/grunt-cli/bin/grunt
+
+
+if [ -d "node_modules/bower" ]; then
+  cd client/assets/js
+  node ../../../node_modules/bower/bin/bower install
+  cd -
+  node ./node_modules/grunt-cli/bin/grunt
+else
+  echo "bower not installed?"
+fi
