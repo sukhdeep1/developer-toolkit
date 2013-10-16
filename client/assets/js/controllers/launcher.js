@@ -77,7 +77,15 @@ angular.module('developer-toolkit.controllers')
         $scope.$watch('options', function () {
           $scope.reRender();
         }, true);
-
+        $scope.$watch('requestedOptions',function(){
+          var clientOptions = getClientOptions();
+          if($scope.encryptionResult){
+            $scope.updateTemplate($scope.encryptionResult.clientId, 
+                                  $scope.encryptionResult.options, 
+                                  JSON.stringify(clientOptions), 
+                                  $scope.encryptionResult.request);
+          }
+        });
         $scope.$watch('overrides', function (a, b) {
           var k, equal = true;
           for (k in a) {
@@ -89,18 +97,27 @@ angular.module('developer-toolkit.controllers')
             $scope.reRender();
           }
         }, true);
-
+        function getClientOptions(){
+          var clientOptions = {};
+          clientOptions.mode = $scope.options.mode;
+          addId(clientOptions, 'itemId');
+          addId(clientOptions, 'sessionId');
+          addId(clientOptions, 'assessmentId');
+          try{
+            clientOptions = _.extend(clientOptions,JSON.parse($scope.requestedOptions))
+          } catch (e){}
+          return clientOptions;
+        }
+        function addId(obj, key) {
+          if ($scope.show(key)) {
+            obj[key] = $scope.options[key];
+          }
+        };        
         $scope.reRender = function () {
 
           var addWildcard = function (obj, key, value) {
             if ($scope.overrides[key]) {
               obj[key] = value;
-            }
-          };
-
-          var addId = function (obj, key) {
-            if ($scope.show(key)) {
-              obj[key] = $scope.options[key];
             }
           };
 
@@ -111,11 +128,7 @@ angular.module('developer-toolkit.controllers')
 
 
           var optionsToEncrypt, clientOptions = {};
-          //Note - mode is mandatory on the client side
-          clientOptions.mode = $scope.options.mode;
-          addId(clientOptions, 'itemId');
-          addId(clientOptions, 'sessionId');
-          addId(clientOptions, 'assessmentId');
+          clientOptions = getClientOptions();
 
           optionsToEncrypt = _.extend(_.clone($scope.options), serverOptions);
 
