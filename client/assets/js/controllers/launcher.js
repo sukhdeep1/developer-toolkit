@@ -88,7 +88,7 @@ angular.module('developer-toolkit.controllers')
             $scope.extraRequestedOptions = JSON.parse($scope.requestedOptions);
             $scope.reRender();
           } catch (e){
-            $scope.extraRequestedOptions = {}
+            $scope.extraRequestedOptions = {};
           }
         });
         $scope.$watch('overrides', function (a, b) {
@@ -114,7 +114,7 @@ angular.module('developer-toolkit.controllers')
           if ($scope.show(key)) {
             obj[key] = $scope.options[key];
           }
-        };  
+        }  
         $scope.reRender = function () {
           var addWildcard = function (obj, key, value) {
             if ($scope.overrides[key]) {
@@ -128,8 +128,11 @@ angular.module('developer-toolkit.controllers')
 
 
           var optionsToEncrypt, clientOptions = {};
-          if($scope.extraRequestedOptions) clientOptions = getClientOptions($scope.extraRequestedOptions);
-          else clientOptions = getClientOptions({})
+          if($scope.extraRequestedOptions){
+            clientOptions = getClientOptions($scope.extraRequestedOptions);
+          } else{ 
+            clientOptions = getClientOptions({});
+          }
 
           optionsToEncrypt = _.extend(_.clone($scope.options), serverOptions);
 
