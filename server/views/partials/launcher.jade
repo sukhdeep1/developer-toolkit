@@ -58,3 +58,7 @@ include ../mixins/form-items
           label.inline.radio
             input(type="radio", ng-model="options.role", value="instructor", name="role")
             | Instructor
+
+      .control-group
+        label.control-label Requested (optional)
+        input.controls(type="text", ng-model="requestedOptions", name="requested")

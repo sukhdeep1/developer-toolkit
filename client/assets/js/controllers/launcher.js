@@ -77,7 +77,20 @@ angular.module('developer-toolkit.controllers')
         $scope.$watch('options', function () {
           $scope.reRender();
         }, true);
-
+        $scope.$watch('requestedOptions',function(){
+          // var clientOptions = getClientOptions();
+          // if($scope.encryptionResult){
+          //   $scope.updateTemplate($scope.encryptionResult.clientId, 
+          //                         $scope.encryptionResult.options, 
+          //                         JSON.stringify(clientOptions), 
+          //                         $scope.encryptionResult.request);
+          try{
+            $scope.extraRequestedOptions = JSON.parse($scope.requestedOptions);
+            $scope.reRender();
+          } catch (e){
+            $scope.extraRequestedOptions = {};
+          }
+        });
         $scope.$watch('overrides', function (a, b) {
           var k, equal = true;
           for (k in a) {
@@ -89,21 +102,25 @@ angular.module('developer-toolkit.controllers')
             $scope.reRender();
           }
         }, true);
-
+        function getClientOptions(extraOptions){
+          var clientOptions = {};
+          clientOptions.mode = $scope.options.mode;
+          addId(clientOptions, 'itemId');
+          addId(clientOptions, 'sessionId');
+          addId(clientOptions, 'assessmentId');
+          return _.extend(clientOptions, extraOptions);
+        }       
+        function addId(obj, key) {
+          if ($scope.show(key)) {
+            obj[key] = $scope.options[key];
+          }
+        }  
         $scope.reRender = function () {
-
           var addWildcard = function (obj, key, value) {
             if ($scope.overrides[key]) {
               obj[key] = value;
             }
           };
-
-          var addId = function (obj, key) {
-            if ($scope.show(key)) {
-              obj[key] = $scope.options[key];
-            }
-          };
-
           var serverOptions = {};
           addWildcard(serverOptions, "itemId", "*");
           addWildcard(serverOptions, "sessionId", "*");
@@ -111,11 +128,11 @@ angular.module('developer-toolkit.controllers')
 
 
           var optionsToEncrypt, clientOptions = {};
-          //Note - mode is mandatory on the client side
-          clientOptions.mode = $scope.options.mode;
-          addId(clientOptions, 'itemId');
-          addId(clientOptions, 'sessionId');
-          addId(clientOptions, 'assessmentId');
+          if($scope.extraRequestedOptions){
+            clientOptions = getClientOptions($scope.extraRequestedOptions);
+          } else{ 
+            clientOptions = getClientOptions({});
+          }
 
           optionsToEncrypt = _.extend(_.clone($scope.options), serverOptions);
 
@@ -148,7 +165,7 @@ angular.module('developer-toolkit.controllers')
 
         $scope.encryptOptions = function (opts, onSuccess) {
           var onError = function (data) {
-            console.warn("error: ");
+            console.warn("error: "+JSON.stringify(data));
             $scope.editorText = $scope.errorMessage;
             $scope.$emit('apiCallFailed', 'encrypt-options');
           };

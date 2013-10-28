@@ -13,7 +13,7 @@ angular.module('developer-toolkit')
           .replace(":accessToken", params.accessToken);
 
         console.log("Calling", finalUrl);
-        $http.post(finalUrl).success( function(data){
+        $http.post(finalUrl,{settings: {highlightCorrectResponse: false, showFeedback: false, highlightUserResponse: false}}).success( function(data){
           cb(data);
         });
       }
