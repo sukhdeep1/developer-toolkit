@@ -13,7 +13,7 @@ helpers.controller.initController = function (name, mockProviders, postScopeFn, 
 
   var scope, ctrl, $httpBackend;
 
-  module('developer-toolkit.controllers');
+  angular.mock.module('developer-toolkit.controllers');
 
   module(function ($provide) {
     for (var name in  mockProviders) {

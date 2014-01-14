@@ -2,17 +2,26 @@
 
 describe('search', function () {
 
+  beforeEach(angular.mock.module("developer-toolkit.controllers"));
+
+  var routeParamsStub = {};
   var scope = null;
   beforeEach(function () {
     scope = helpers.controller.initController('Search', {'ItemFormatter': {}}, function (s) {
       s.appVars = {};
-    })
+    }, 
+    function(s) { 
+      return { 
+        '$scope' : s, 
+        '$routeParams': routeParamsStub};
+      }
+    )
   });
 
   it('should init', function () {
     expect(scope.searchInProgress).toBe(false);
   });
-
+  
   it('should load more', function () {
 
     var eventTriggered = false;

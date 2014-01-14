@@ -43,6 +43,8 @@ describe('search-form', function () {
     expect(scope).toNotBe(null);
   });
 
+  
+
   it('should reset form', function () {
     scope.keyword = "blah";
     expect(scope.keyword).toEqual("blah");
@@ -93,6 +95,8 @@ describe('search-form', function () {
       scope.search();
       expect(scope.errorMessage).toEqual(scope.errorPrefix + mockSearchErrorMsg);
     });
+
   });
+
 });
 

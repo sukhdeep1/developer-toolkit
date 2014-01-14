@@ -5,7 +5,7 @@ module.exports = function (grunt) {
 
   var config = {
     pkg: grunt.file.readJSON('package.json'),
-    clean: [ client + "/assets/js/bower_components"],
+    clean: [ client + "/assets/js/bower_components", client + "/spec/runner/bower_components"],
 
     shell: {
       prepareTests: {
@@ -22,9 +22,18 @@ module.exports = function (grunt) {
           js + '/developer-toolkit.js',
           js + '/controllers/**/*.js'],
         options: {
+          keepRunner: true,
+          /*vendor: [
+            client + '/spec/runner/bower_components/angular/angular.js',
+            client + '/spec/runner/bower_components/angular-resource/angular-resource.js',
+            client + '/spec/runner/bower_components/angular-route/angular-route.js',
+            client + '/spec/runner/bower_components/jquery/jquery.js',
+            client + '/spec/runner/bower_components/underscore/underscore.js'
+          ],*/
           specs: client + '/spec/specs/**/*-spec.js',
           helpers: client + '/spec/helpers/**/*-helper.js',
           template: client + '/spec/runner/angular-runner.tmpl'
+
         }
       }
     },

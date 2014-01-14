@@ -2,9 +2,10 @@
   "name": "angular-runner-template",
   "version": "0.0.1",
   "dependencies": {
-    "angular": "latest",
-    "angular-resource": "latest",
-    "angular-mocks": "latest",
+    "angular": "1.2.8",
+    "angular-resource": "1.2.8",
+    "angular-mocks": "1.2.8",
+    "angular-route": "1.2.8",
     "underscore": "latest",
     "jquery": "latest"
   }
