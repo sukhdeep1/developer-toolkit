@@ -2,8 +2,9 @@
   "name": "developer-toolkit-client",
   "version": "0.0.1",
   "dependencies": {
-    "angular-unstable": "~1.1.5",
-    "angular-resource": "latest",
+    "angular": "1.2.8",
+    "angular-resource": "1.2.8",
+    "angular-route": "1.2.8",
     "underscore": "latest",
     "jquery": "latest",
     "angular-ui": "latest",

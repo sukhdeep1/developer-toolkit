@@ -3,3 +3,4 @@ node_modules
 buildAssets
 .grunt
 _SpecRunner.html
+.bower-*

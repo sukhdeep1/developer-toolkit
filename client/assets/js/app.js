@@ -1,6 +1,7 @@
 //= require "bower_components/jquery/jquery"
-//= require "bower_components/angular-unstable/angular"
+//= require "bower_components/angular/angular"
 //= require "bower_components/angular-resource/angular-resource"
+//= require "bower_components/angular-route/angular-route"
 //= require "bootstrap-2.3.2/js/bootstrap"
 //= require "bower_components/underscore/underscore"
 //= require "bower_components/select2/select2"

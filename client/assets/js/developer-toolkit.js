@@ -4,7 +4,8 @@ angular.module('developer-toolkit', [
     'corespring-ng-utils',
     'cs.directives',
     'ui',
-    'ngResource'])
+    'ngResource', 
+    'ngRoute'])
   .config(['$routeProvider', function ($router) {
     $router
       .when('/search', {templateUrl: '/partials/search', controller: "Search"})
